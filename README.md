@@ -5,7 +5,7 @@
 
 <!-- ==================== TYPING EFFECT ==================== -->
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=6A5ACD&center=true&vCenter=true&width=620&height=50&lines=Hi+%F0%9F%91%8B%2C+I'm+QQQuan2;A+Passionate+Developer;Full-Stack+%26+Data+Enthusiast;Building+Things+That+Matter;Welcome+to+My+Profile!" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=6A5ACD&center=true&vCenter=true&width=620&height=50&lines=Hi+%F0%9F%91%8B;QQQuan2;Learning+to+code+one+bug+at+a+time;Full-stack+newbie+%26+data+dabbler;Still+got+a+lot+to+learn" alt="Typing SVG" />
 </a>
 
 <!-- ==================== SOCIAL BADGES ==================== -->
@@ -18,14 +18,14 @@
 
 # About Me
 
-> *A developer passionate about crafting elegant solutions across the stack — from backend systems to interactive data visualizations.*
+> *Just someone who likes building things and breaking them less often along the way.*
 
 ```yaml
-🔭  Currently:   Exploring full-stack development & data analysis
-🌱  Learning:    Python · Flask · SQL · Frontend Engineering
-👯  Open to:    Collaboration on meaningful open-source projects
-💬  Ask me about: Web development, databases, data visualization
-⚡  Fun fact:    I believe the best code is the code that solves real problems
+•  Currently:   Still figuring out full-stack development
+•  Learning:    Python, Flask, SQL, frontend basics
+•  Looking for: Interesting side projects to work on
+•  Ask me:     Web dev, databases, data stuff (if I know it)
+•  Fun fact:   I spend more time debugging than actually coding
 ```
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
