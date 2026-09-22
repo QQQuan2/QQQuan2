@@ -87,13 +87,6 @@
   </tr>
 </table>
 
-<!-- ==================== ACTIVITY GRAPH ==================== -->
-## Contribution Activity
-
-<div align="center">
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=QQQuan2&theme=react-dark&bg_color=0d1117&hide_border=true&area=true&color=6a5acd&line=20b2aa&point=ffffff" width="95%" />
-</div>
-
 <!-- ==================== SNAKE ANIMATION ==================== -->
 <div align="center">
   <picture>
