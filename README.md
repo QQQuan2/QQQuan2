@@ -1,17 +1,17 @@
 <div align="center">
 
 <!-- ==================== ANIMATED WAVE HEADER ==================== -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff416c,50:ff4b1f,100:ff9068&height=220&section=header&text=QQQuan2&fontSize=60&fontColor=ffffff&fontAlignY=38&animation=fadeIn" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:00f5ff,50:ff00aa,100:ffdd00&height=220&section=header&text=QQQuan2&fontSize=60&fontColor=ffffff&fontAlignY=38&animation=fadeIn" width="100%" />
 
 <!-- ==================== TYPING EFFECT ==================== -->
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=6A5ACD&center=true&vCenter=true&width=620&height=50&lines=Hi+%F0%9F%91%8B;QQQuan2;Learning+to+code+one+bug+at+a+time;Full-stack+newbie+%26+data+dabbler;Still+got+a+lot+to+learn" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=FF00AA&center=true&vCenter=true&width=620&height=50&lines=Hi+%F0%9F%91%8B;QQQuan2;Learning+to+code+one+bug+at+a+time;Full-stack+newbie+%26+data+dabbler;Still+got+a+lot+to+learn" alt="Typing SVG" />
 </a>
 
 <!-- ==================== SOCIAL BADGES ==================== -->
 <a href="https://github.com/QQQuan2"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /></a>
 <a href="https://qqquan2.github.io/QQQuan2/"><img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" /></a>
-<img src="https://img.shields.io/badge/Focus-Full--Stack%20%7C%20AI-blueviolet?style=for-the-badge" />
+<img src="https://img.shields.io/badge/Focus-Full--Stack%20%7C%20AI-FF00AA?style=for-the-badge" />
 
 <!-- ==================== ABOUT ME ==================== -->
 </div>
@@ -34,7 +34,7 @@
 ## GitHub Analytics
 
 <div align="center">
-  <img src="https://github-readme-streak-stats.herokuapp.com/?user=QQQuan2&theme=radical&hide_border=true&background=0d1117&stroke=6a5acd&ring=20b2aa&fire=ff6b6b&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=6a5acd&sideLabels=6a5acd&dates=8b8b8b" width="70%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=QQQuan2&theme=radical&hide_border=true&background=0d1117&stroke=00f5ff&ring=ff00aa&fire=ffdd00&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=00f5ff&sideLabels=ff00aa&dates=8b8b8b" width="70%" />
 </div>
 
 <!-- ==================== TECH STACK ==================== -->
@@ -108,5 +108,5 @@
 
 <!-- ==================== FOOTER ==================== -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff9068,50:ff4b1f,100:ff416c&height=120&section=footer&text=Thanks%20for%20stopping%20by!%20%F0%9F%9A%80&fontSize=22&fontColor=ffffff&fontAlignY=65" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:ffdd00,50:ff00aa,100:00f5ff&height=120&section=footer&text=Thanks%20for%20stopping%20by!%20%F0%9F%9A%80&fontSize=22&fontColor=ffffff&fontAlignY=65" width="100%" />
 </div>
