@@ -34,28 +34,7 @@
 ## GitHub Analytics
 
 <div align="center">
-  <table>
-    <tr>
-      <td align="center" width="50%">
-        <img src="https://github-readme-stats.vercel.app/api?username=QQQuan2&show_icons=true&count_private=true&include_all_commits=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=6a5acd&text_color=ffffff&icon_color=20b2aa" width="100%" />
-      </td>
-      <td align="center" width="50%">
-        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=QQQuan2&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=6a5acd&text_color=ffffff&langs_count=8" width="100%" />
-      </td>
-    </tr>
-    <tr>
-      <td align="center" colspan="2">
-        <img src="https://github-readme-streak-stats.herokuapp.com/?user=QQQuan2&theme=radical&hide_border=true&background=0d1117&stroke=6a5acd&ring=20b2aa&fire=ff6b6b&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=6a5acd&sideLabels=6a5acd&dates=8b8b8b" width="70%" />
-      </td>
-    </tr>
-  </table>
-</div>
-
-<!-- ==================== TROPHIES ==================== -->
-## GitHub Trophies
-
-<div align="center">
-  <img src="https://github-profile-trophy.vercel.app/?username=QQQuan2&theme=radical&no-frame=true&no-bg=true&row=2&column=4&margin-w=15&margin-h=15" width="90%" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=QQQuan2&theme=radical&hide_border=true&background=0d1117&stroke=6a5acd&ring=20b2aa&fire=ff6b6b&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=6a5acd&sideLabels=6a5acd&dates=8b8b8b" width="70%" />
 </div>
 
 <!-- ==================== TECH STACK ==================== -->
