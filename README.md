@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- ==================== ANIMATED WAVE HEADER ==================== -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:6a5acd,100:20b2aa&height=220&section=header&text=QQQuan2&fontSize=60&fontColor=ffffff&fontAlignY=38&animation=fadeIn" width="100%" />
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff416c,50:ff4b1f,100:ff9068&height=220&section=header&text=QQQuan2&fontSize=60&fontColor=ffffff&fontAlignY=38&animation=fadeIn" width="100%" />
 
 <!-- ==================== TYPING EFFECT ==================== -->
 <a href="https://git.io/typing-svg">
@@ -108,5 +108,5 @@
 
 <!-- ==================== FOOTER ==================== -->
 <div align="center">
-  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:20b2aa,50:6a5acd,100:0d1117&height=120&section=footer&text=Thanks%20for%20stopping%20by!%20%F0%9F%9A%80&fontSize=22&fontColor=ffffff&fontAlignY=65" width="100%" />
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:ff9068,50:ff4b1f,100:ff416c&height=120&section=footer&text=Thanks%20for%20stopping%20by!%20%F0%9F%9A%80&fontSize=22&fontColor=ffffff&fontAlignY=65" width="100%" />
 </div>
