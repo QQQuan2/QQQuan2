@@ -23,13 +23,50 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           # 部署整个仓库：README 里的预览链接指向 /waimai-preview/ 与 /csv-dashboard/
           path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify key pages are reachable
+        if: steps.deployment.outputs.page_url != ''
+        run: |
+          set -e
+          BASE="${{ steps.deployment.outputs.page_url }}"
+          BASE="${BASE%/}/"
+          echo "Expected Pages base URL: $BASE"
+
+          check() {
+            url="$1"
+            echo "Checking $url ..."
+            for i in 1 2 3; do
+              code=$(curl -sL -o /dev/null -w "%{http_code}" "$url" || true)
+              echo "  attempt $i: HTTP $code"
+              if [ "$code" = "200" ]; then
+                return 0
+              fi
+              sleep 15
+            done
+            echo "ERROR: $url did not return 200 after 3 attempts (last code: $code)"
+            echo "常见原因："
+            echo "  1. 仓库 Settings -> Pages -> Source 没有选 GitHub Actions"
+            echo "  2. 仓库被重命名/删除，导致 Pages URL 变化"
+            echo "  3. 部署 artifact 为空或路径错误"
+            return 1
+          }
+
+          check "${BASE}"
+          check "${BASE}waimai-preview/"
+          check "${BASE}waimai-preview/demo/"
+          check "${BASE}csv-dashboard/"
+          echo "All key pages are reachable."
