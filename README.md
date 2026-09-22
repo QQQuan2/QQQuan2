@@ -13,15 +13,10 @@
 <a href="https://qqquan2.github.io/QQQuan2/"><img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" /></a>
 <img src="https://img.shields.io/badge/Focus-Full--Stack%20%7C%20AI-blueviolet?style=for-the-badge" />
 
-<!-- ==================== PROFILE VISIT COUNTER ==================== -->
-<br />
-<img src="https://visitcount.itsvg.in/api?id=QQQuan2&icon=5&color=6" alt="Visit Count" />
-<br /><br />
-
 <!-- ==================== ABOUT ME ==================== -->
 </div>
 
-# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand%20Light%20Skin%20Tone.png" width="28" /> About Me
+# About Me
 
 > *A developer passionate about crafting elegant solutions across the stack — from backend systems to interactive data visualizations.*
 
@@ -36,7 +31,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <!-- ==================== GITHUB STATS ==================== -->
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" width="28" /> GitHub Analytics
+## GitHub Analytics
 
 <div align="center">
   <table>
@@ -57,14 +52,14 @@
 </div>
 
 <!-- ==================== TROPHIES ==================== -->
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Trophies/1st%20Place%20Medal.png" width="28" /> GitHub Trophies
+## GitHub Trophies
 
 <div align="center">
   <img src="https://github-profile-trophy.vercel.app/?username=QQQuan2&theme=radical&no-frame=true&no-bg=true&row=2&column=4&margin-w=15&margin-h=15" width="90%" />
 </div>
 
 <!-- ==================== TECH STACK ==================== -->
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Hammer%20and%20Wrench.png" width="28" /> Tech Stack
+## Tech Stack
 
 <div align="center">
 
@@ -82,7 +77,7 @@
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
 <!-- ==================== FEATURED PROJECTS ==================== -->
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png" width="28" /> Featured Projects
+## Featured Projects
 
 <table align="center" width="100%">
   <tr>
@@ -114,7 +109,7 @@
 </table>
 
 <!-- ==================== ACTIVITY GRAPH ==================== -->
-## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" width="28" /> Contribution Activity
+## Contribution Activity
 
 <div align="center">
   <img src="https://github-readme-activity-graph.vercel.app/graph?username=QQQuan2&theme=react-dark&bg_color=0d1117&hide_border=true&area=true&color=6a5acd&line=20b2aa&point=ffffff" width="95%" />
