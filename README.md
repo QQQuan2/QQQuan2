@@ -1,60 +1,145 @@
-# 个人作品集
+<div align="center">
 
-这个仓库收录我在课程学习和个人探索中完成的项目。
+<!-- ==================== ANIMATED WAVE HEADER ==================== -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:6a5acd,100:20b2aa&height=220&section=header&text=QQQuan2&fontSize=60&fontColor=ffffff&fontAlignY=38&animation=fadeIn" width="100%" />
 
-## 项目列表
+<!-- ==================== TYPING EFFECT ==================== -->
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1200&color=6A5ACD&center=true&vCenter=true&width=620&height=50&lines=Hi+%F0%9F%91%8B%2C+I'm+QQQuan2;A+Passionate+Developer;Full-Stack+%26+Data+Enthusiast;Building+Things+That+Matter;Welcome+to+My+Profile!" alt="Typing SVG" />
+</a>
 
-### 1. 外卖配送系统 · [waimai-delivery-system/](waimai-delivery-system/)
+<!-- ==================== SOCIAL BADGES ==================== -->
+<a href="https://github.com/QQQuan2"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /></a>
+<a href="https://qqquan2.github.io/"><img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" /></a>
+<img src="https://img.shields.io/badge/Focus-Full--Stack%20%7C%20AI-blueviolet?style=for-the-badge" />
 
-简介：该项目为《管理信息系统》课程期末项目：一个可以真正跑起来的外卖点餐与配送管理系统，四种角色数据互相联动。
+<!-- ==================== PROFILE VISIT COUNTER ==================== -->
+<br />
+<img src="https://visitcount.itsvg.in/api?id=QQQuan2&icon=5&color=6" alt="Visit Count" />
+<br /><br />
 
+<!-- ==================== ABOUT ME ==================== -->
+</div>
 
-**在线体验**：
+# <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand%20Light%20Skin%20Tone.png" width="28" /> About Me
 
-- 在线试运行：[外卖系统 · 在线试运行](https://qqquan2.github.io/InventoRY/waimai-preview/demo/)
-- 效果预览（全部界面截图）：[外卖系统 · 预览页](https://qqquan2.github.io/InventoRY/waimai-preview/)
+> *A developer passionate about crafting elegant solutions across the stack — from backend systems to interactive data visualizations.*
 
-**源代码**：点击 [waimai-delivery-system/](waimai-delivery-system/) 文件夹查看（含 [详细文档](waimai-delivery-system/README.md)）
-
-- 技术栈：Python · Flask · SQLite / MySQL · 原生 HTML / CSS / JS
-- 数据模型：8 张业务表（Users / Merchants / Dishes / Orders / Order_Details / Deliveries / Comments / Addresses）
-- 核心功能：
-  - 四种角色联动：顾客下单、商家接单、骑手抢单配送、送达、顾客评价、商家回复
-  - 登录页四种身份选择，支持找回密码（验证码演示流程）
-  - 顾客地址簿：保存多个收货地址、一键设为默认、下单时快捷选用
-  - 环保餐具选项：下单时可选择是否需要一次性餐具（默认不需要）
-  - 商家端：菜品管理、实拍图上传（无图时自动用 emoji 占位展示）、评价回复
-  - 管理员可视化看板：近 7 天订单/营收走势、订单状态分布、商家营收排行、用户管理
-- 质量保障：`python tests/smoke_test.py`，77 项接口冒烟测试全覆盖
-
-**本地运行（3 步）**：
-
-```powershell
-cd waimai-delivery-system
-python init_db.py     # 首次运行：建库 + 示例数据（密码统一 123456）
-python app.py         # 启动服务
+```yaml
+🔭  Currently:   Exploring full-stack development & data analysis
+🌱  Learning:    Python · Flask · SQL · Frontend Engineering
+👯  Open to:    Collaboration on meaningful open-source projects
+💬  Ask me about: Web development, databases, data visualization
+⚡  Fun fact:    I believe the best code is the code that solves real problems
 ```
 
-然后浏览器打开 <http://127.0.0.1:5000>
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
 
-### 2. CSV 数据可视化仪表盘 · [csv-dashboard/](csv-dashboard/)
+<!-- ==================== GITHUB STATS ==================== -->
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bar%20Chart.png" width="28" /> GitHub Analytics
 
-简介：该项目为《人工智能与机器学习》课堂作业：上传本地 CSV 文件，即可预览、统计与可视化的纯前端仪表盘。
+<div align="center">
+  <table>
+    <tr>
+      <td align="center" width="50%">
+        <img src="https://github-readme-stats.vercel.app/api?username=QQQuan2&show_icons=true&count_private=true&include_all_commits=true&theme=radical&hide_border=true&bg_color=0d1117&title_color=6a5acd&text_color=ffffff&icon_color=20b2aa" width="100%" />
+      </td>
+      <td align="center" width="50%">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=QQQuan2&layout=compact&theme=radical&hide_border=true&bg_color=0d1117&title_color=6a5acd&text_color=ffffff&langs_count=8" width="100%" />
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <img src="https://github-readme-streak-stats.herokuapp.com/?user=QQQuan2&theme=radical&hide_border=true&background=0d1117&stroke=6a5acd&ring=20b2aa&fire=ff6b6b&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=6a5acd&sideLabels=6a5acd&dates=8b8b8b" width="70%" />
+      </td>
+    </tr>
+  </table>
+</div>
 
-**在线体验**：
+<!-- ==================== TROPHIES ==================== -->
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Trophies/1st%20Place%20Medal.png" width="28" /> GitHub Trophies
 
-- 在线试运行：[CSV 仪表盘](https://qqquan2.github.io/InventoRY/csv-dashboard/)
+<div align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username=QQQuan2&theme=radical&no-frame=true&no-bg=true&row=2&column=4&margin-w=15&margin-h=15" width="90%" />
+</div>
 
-**源代码**：点击 [csv-dashboard/](csv-dashboard/) 文件夹查看
+<!-- ==================== TECH STACK ==================== -->
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Hammer%20and%20Wrench.png" width="28" /> Tech Stack
 
-- 技术栈：HTML / CSS / JS · Chart.js（图表）· PapaParse（CSV 解析）
-- 核心功能：
-  - 点击 / 拖拽上传 CSV 文件
-  - 数据表格即时预览与统计
-  - 多种图表可视化
-  - 深浅色主题切换
-- 浏览器直接打开即可使用，无需安装。
+<div align="center">
 
----
+### 🖥️ Languages
+<img src="https://skillicons.dev/icons?i=python,javascript,html,css,sql&theme=dark&perline=10" />
 
-> 更多项目持续更新中，欢迎交流。
+### 🛠️ Frameworks & Tools
+<img src="https://skillicons.dev/icons?i=flask,fastapi,vscode,pycharm,git,github,postman,markdown&theme=dark&perline=10" />
+
+### 🗄️ Databases & Platforms
+<img src="https://skillicons.dev/icons?i=sqlite,mysql,vercel,powershell,windows&theme=dark&perline=10" />
+
+</div>
+
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<!-- ==================== FEATURED PROJECTS ==================== -->
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Open%20Book.png" width="28" /> Featured Projects
+
+<table align="center" width="100%">
+  <tr>
+    <td width="50%" valign="top">
+      <h3 align="center">🍜 外卖配送系统</h3>
+      <div align="center">
+        <a href="https://qqquan2.github.io/waimai-preview/demo/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" /></a>
+        <a href="https://github.com/QQQuan2/QQQuan2/tree/main/waimai-delivery-system"><img src="https://img.shields.io/badge/📂_Source-20B2AA?style=for-the-badge" /></a>
+      </div>
+      <br />
+      <p align="center">
+        <strong>Python · Flask · SQLite / MySQL</strong><br />
+        A full-function food delivery system with four interlinked roles: customers, merchants, riders, and admin. Features include address book, eco-friendly tableware options, interactive dashboards, and complete order lifecycle management — all wrapped in a 77-test smoke suite.
+      </p>
+    </td>
+    <td width="50%" valign="top">
+      <h3 align="center">📊 CSV 数据仪表盘</h3>
+      <div align="center">
+        <a href="https://qqquan2.github.io/csv-dashboard/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" /></a>
+        <a href="https://github.com/QQQuan2/QQQuan2/tree/main/csv-dashboard"><img src="https://img.shields.io/badge/📂_Source-20B2AA?style=for-the-badge" /></a>
+      </div>
+      <br />
+      <p align="center">
+        <strong>HTML · CSS · JavaScript · Chart.js</strong><br />
+        A pure-frontend dashboard that turns uploaded CSV files into interactive visualizations. Features instant data preview, statistical summaries, multiple chart types, and a dark/light theme toggle — no backend required.
+      </p>
+    </td>
+  </tr>
+</table>
+
+<!-- ==================== ACTIVITY GRAPH ==================== -->
+## <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Chart%20Increasing.png" width="28" /> Contribution Activity
+
+<div align="center">
+  <img src="https://github-readme-activity-graph.vercel.app/graph?username=QQQuan2&theme=react-dark&bg_color=0d1117&hide_border=true&area=true&color=6a5acd&line=20b2aa&point=ffffff" width="95%" />
+</div>
+
+<!-- ==================== SNAKE ANIMATION ==================== -->
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/QQQuan2/QQQuan2/output/github-contribution-grid-snake-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/QQQuan2/QQQuan2/output/github-contribution-grid-snake.svg" />
+    <img alt="GitHub Contribution Snake" src="https://raw.githubusercontent.com/QQQuan2/QQQuan2/output/github-contribution-grid-snake.svg" width="85%" />
+  </picture>
+</div>
+
+<!-- ==================== DIVIDER ==================== -->
+<img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%">
+
+<!-- ==================== QUOTE ==================== -->
+<div align="center">
+  <br />
+  <img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical" width="80%" />
+  <br /><br />
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<div align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=0:20b2aa,50:6a5acd,100:0d1117&height=120&section=footer&text=Thanks%20for%20stopping%20by!%20%F0%9F%9A%80&fontSize=22&fontColor=ffffff&fontAlignY=65" width="100%" />
+</div>
