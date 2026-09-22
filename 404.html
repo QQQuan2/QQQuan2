@@ -25,8 +25,19 @@
     <h1>404</h1>
     <h2>这里还没有内容</h2>
     <p>你访问的页面可能尚未部署，或者地址拼写有误。<br>如果刚修改过 GitHub Pages 设置，请等待 1-2 分钟后刷新。</p>
-    <a href="https://qqquan2.github.io/">返回作品集首页</a>
-    <p class="hint">仓库地址：github.com/QQQuan2/QQQuan2</p>
+    <a id="homeLink" href="/QQQuan2/">返回作品集首页</a>
+    <p class="hint">仓库地址：<span id="repoHint">github.com/QQQuan2/QQQuan2</span></p>
   </div>
+  <script>
+    // GitHub Pages 可能是「项目站点」（http://user.github.io/<repo>/），
+    // 也可能是「用户站点」（http://user.github.io/）。这里根据当前路径自动判断，
+    // 这样以后仓库改名或迁移到用户站点，本页链接依然有效。
+    (function () {
+      var segs = location.pathname.split('/').filter(Boolean);
+      var base = segs.length ? '/' + segs[0] + '/' : '/';
+      document.getElementById('homeLink').setAttribute('href', base);
+      document.getElementById('repoHint').textContent = 'github.com/' + location.hostname.split('.')[0] + base.replace(/\//g, '');
+    })();
+  </script>
 </body>
 </html>

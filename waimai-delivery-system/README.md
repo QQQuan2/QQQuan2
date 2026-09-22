@@ -2,8 +2,8 @@
 
 一个基于 **Flask + SQLite / MySQL** 的完整外卖配送系统：四种角色（顾客 / 商家 / 骑手 / 管理员）数据互相联动，覆盖「下单 → 接单 → 配送 → 送达 → 评价 → 回复」的完整业务闭环。
 
-- **界面预览**：[在线预览页（含全部截图）](https://qqquan2.github.io/InventoRY/waimai-preview/)
-- **在线试运行**（浏览器直接操作，无需安装）：[外卖系统 · 在线试运行](https://qqquan2.github.io/InventoRY/waimai-preview/demo/)
+- **界面预览**：[在线预览页（含全部截图）](https://qqquan2.github.io/QQQuan2/waimai-preview/)
+- **在线试运行**（浏览器直接操作，无需安装）：[外卖系统 · 在线试运行](https://qqquan2.github.io/QQQuan2/waimai-preview/demo/)
 
 ---
 

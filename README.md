@@ -11,8 +11,8 @@
 
 **在线体验**：
 
-- 在线试运行：[外卖系统 · 在线试运行](https://qqquan2.github.io/waimai-preview/demo/)
-- 效果预览（全部界面截图）：[外卖系统 · 预览页](https://qqquan2.github.io/waimai-preview/)
+- 在线试运行：[外卖系统 · 在线试运行](https://qqquan2.github.io/QQQuan2/waimai-preview/demo/)
+- 效果预览（全部界面截图）：[外卖系统 · 预览页](https://qqquan2.github.io/QQQuan2/waimai-preview/)
 
 **源代码**：点击 [waimai-delivery-system/](waimai-delivery-system/) 文件夹查看（含 [详细文档](waimai-delivery-system/README.md)）
 
@@ -43,7 +43,7 @@ python app.py         # 启动服务
 
 **在线体验**：
 
-- 在线试运行：[CSV 仪表盘](https://qqquan2.github.io/csv-dashboard/)
+- 在线试运行：[CSV 仪表盘](https://qqquan2.github.io/QQQuan2/csv-dashboard/)
 
 **源代码**：点击 [csv-dashboard/](csv-dashboard/) 文件夹查看
 

@@ -38,35 +38,62 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Verify key pages are reachable
+      - name: Verify key pages are reachable and correct
         if: steps.deployment.outputs.page_url != ''
         run: |
           set -e
           BASE="${{ steps.deployment.outputs.page_url }}"
           BASE="${BASE%/}/"
           echo "Expected Pages base URL: $BASE"
+          echo "（注意：本仓库不是 <user>.github.io，因此站点位于 /<repo>/ 子路径下）"
 
-          check() {
+          fetch() {
             url="$1"
-            echo "Checking $url ..."
-            for i in 1 2 3; do
-              code=$(curl -sL -o /dev/null -w "%{http_code}" "$url" || true)
-              echo "  attempt $i: HTTP $code"
+            for i in 1 2 3 4 5 6; do
+              code=$(curl -sL -o /tmp/page.html -w "%{http_code}" "$url" || true)
+              echo "  [$url] attempt $i: HTTP $code"
               if [ "$code" = "200" ]; then
                 return 0
               fi
               sleep 15
             done
-            echo "ERROR: $url did not return 200 after 3 attempts (last code: $code)"
+            echo "ERROR: $url did not return 200 after 6 attempts (last code: $code)"
             echo "常见原因："
-            echo "  1. 仓库 Settings -> Pages -> Source 没有选 GitHub Actions"
+            echo "  1. 仓库 Settings -> Pages -> Source 不是 GitHub Actions"
             echo "  2. 仓库被重命名/删除，导致 Pages URL 变化"
             echo "  3. 部署 artifact 为空或路径错误"
             return 1
           }
 
-          check "${BASE}"
-          check "${BASE}waimai-preview/"
-          check "${BASE}waimai-preview/demo/"
-          check "${BASE}csv-dashboard/"
-          echo "All key pages are reachable."
+          assert_contains() {
+            file="$1"; needle="$2"; label="$3"
+            if grep -q "$needle" "$file"; then
+              echo "  OK: $label"
+            else
+              echo "  ERROR: $label —— 页面缺少预期内容 '$needle'"
+              return 1
+            fi
+          }
+
+          # 1) 关键页面必须可访问
+          fetch "${BASE}"
+          cp /tmp/page.html /tmp/home.html
+          fetch "${BASE}waimai-preview/"
+          cp /tmp/page.html /tmp/preview.html
+          fetch "${BASE}waimai-preview/demo/"
+          fetch "${BASE}csv-dashboard/"
+
+          # 2) 页面内容必须正确（防止部署到错误分支或空站点）
+          assert_contains /tmp/home.html "作品集" "首页渲染了作品集页面"
+          assert_contains /tmp/preview.html "外卖配送系统" "预览页渲染了外卖系统页面"
+
+          # 3) 不允许再出现已失效的旧路径
+          for f in /tmp/home.html /tmp/preview.html; do
+            if grep -q "InventoRY" "$f"; then
+              echo "  ERROR: $f 中仍残留失效的旧链接 InventoRY"
+              exit 1
+            fi
+          done
+          echo "  OK: 无残留旧链接"
+
+          echo "All key pages are reachable and verified."
