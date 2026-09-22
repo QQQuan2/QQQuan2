@@ -10,7 +10,7 @@
 
 <!-- ==================== SOCIAL BADGES ==================== -->
 <a href="https://github.com/QQQuan2"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" /></a>
-<a href="https://qqquan2.github.io/"><img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" /></a>
+<a href="https://qqquan2.github.io/QQQuan2/"><img src="https://img.shields.io/badge/Portfolio-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white" /></a>
 <img src="https://img.shields.io/badge/Focus-Full--Stack%20%7C%20AI-blueviolet?style=for-the-badge" />
 
 <!-- ==================== PROFILE VISIT COUNTER ==================== -->
@@ -89,7 +89,7 @@
     <td width="50%" valign="top">
       <h3 align="center">🍜 外卖配送系统</h3>
       <div align="center">
-        <a href="https://qqquan2.github.io/waimai-preview/demo/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" /></a>
+        <a href="https://qqquan2.github.io/QQQuan2/waimai-preview/demo/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" /></a>
         <a href="https://github.com/QQQuan2/QQQuan2/tree/main/waimai-delivery-system"><img src="https://img.shields.io/badge/📂_Source-20B2AA?style=for-the-badge" /></a>
       </div>
       <br />
@@ -101,7 +101,7 @@
     <td width="50%" valign="top">
       <h3 align="center">📊 CSV 数据仪表盘</h3>
       <div align="center">
-        <a href="https://qqquan2.github.io/csv-dashboard/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" /></a>
+        <a href="https://qqquan2.github.io/QQQuan2/csv-dashboard/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" /></a>
         <a href="https://github.com/QQQuan2/QQQuan2/tree/main/csv-dashboard"><img src="https://img.shields.io/badge/📂_Source-20B2AA?style=for-the-badge" /></a>
       </div>
       <br />

@@ -45,7 +45,10 @@ jobs:
           BASE="${{ steps.deployment.outputs.page_url }}"
           BASE="${BASE%/}/"
           echo "Expected Pages base URL: $BASE"
-          echo "（注意：本仓库不是 <user>.github.io，因此站点位于 /<repo>/ 子路径下）"
+
+          # 从 BASE 提取仓库路径段（如 /QQQuan2/），用于校验 README 中的公开链接
+          REPO_PATH=$(echo "$BASE" | sed -E 's|https?://[^/]+||')
+          echo "Repo subpath: \"$REPO_PATH\""
 
           fetch() {
             url="$1"
@@ -82,18 +85,51 @@ jobs:
           cp /tmp/page.html /tmp/preview.html
           fetch "${BASE}waimai-preview/demo/"
           fetch "${BASE}csv-dashboard/"
+          fetch "${BASE}404.html"
 
-          # 2) 页面内容必须正确（防止部署到错误分支或空站点）
+          # 2) 页面内容必须正确
           assert_contains /tmp/home.html "作品集" "首页渲染了作品集页面"
           assert_contains /tmp/preview.html "外卖配送系统" "预览页渲染了外卖系统页面"
 
-          # 3) 不允许再出现已失效的旧路径
+          # 3) 首页根目录有 .nojekyll 文件
+          fetch "${BASE}.nojekyll"
+          echo "  OK: .nojekyll 可访问（Jekyll 已被禁用，_ 开头的文件夹不会被吃掉）"
+
+          # 4) 不允许再出现已失效的旧路径
           for f in /tmp/home.html /tmp/preview.html; do
             if grep -q "InventoRY" "$f"; then
               echo "  ERROR: $f 中仍残留失效的旧链接 InventoRY"
               exit 1
             fi
           done
-          echo "  OK: 无残留旧链接"
+          echo "  OK: 无残留旧链接 InventoRY"
 
+          # 5) 验证 README 里的公开链接跟实际部署路径一致
+          echo ""
+          echo "--- README 链接校验 ---"
+          README_URLS=$(curl -sL "https://raw.githubusercontent.com/QQQuan2/QQQuan2/main/README.md" | grep -oE 'https://qqquan2\.github\.io[^"'"'"' )]+' || true)
+          if [ -z "$README_URLS" ]; then
+            echo "  WARN: 没从 README 提取到 Pages 链接，跳过校验"
+          else
+            ALL_OK=true
+            echo "$README_URLS" | sort -u | while IFS= read -r url; do
+              # 去掉尾部 /
+              clean="${url%/}"
+              code=$(curl -sL -o /dev/null -w "%{http_code}" "$clean" || true)
+              if [ "$code" = "200" ] || [ "$code" = "301" ] || [ "$code" = "302" ]; then
+                echo "  ✓ $clean  → $code"
+              else
+                echo "  ✗ $clean  → $code（可能需要加 /QQQuan2/ 前缀）"
+                ALL_OK=false
+              fi
+            done
+            if [ "$ALL_OK" = "true" ]; then
+              echo "  OK: 所有公开链接均可达"
+            else
+              echo "  ERROR: 有链接返回非 200，请检查 README 中的 URL"
+              exit 1
+            fi
+          fi
+
+          echo ""
           echo "All key pages are reachable and verified."
