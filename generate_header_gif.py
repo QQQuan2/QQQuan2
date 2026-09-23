@@ -8,8 +8,22 @@ Art:
   - Dark starry background + ground
 """
 
-from PIL import Image, ImageDraw
 import os
+import sys
+
+# ── Robustness: guard missing Pillow ──────────────────────────
+def _check_pillow():
+    """Check that Pillow is installed before drawing anything."""
+    try:
+        from PIL import Image, ImageDraw
+        return Image, ImageDraw
+    except ImportError:
+        print("[ERROR] Pillow (PIL) is required but not installed.")
+        print("  Install it with:  python -m pip install Pillow")
+        print("  Or:               pip install Pillow")
+        sys.exit(1)
+
+Image, ImageDraw = _check_pillow()
 
 # ── Palette ──────────────────────────────────────────────────
 BG       = (13, 17, 23)   # #0d1117
@@ -39,6 +53,27 @@ TEXT_G   = (245, 158, 11)  # #f59e0b glow accent
 W = 820
 H = 220
 FPS = 180  # ms per frame
+
+# ── Sprite validation ──────────────────────────────────────────
+def _validate_sprite(name, sprite, expected_width=None):
+    """Check that all rows in a sprite have the same length."""
+    if not sprite:
+        raise ValueError(f"[BUG] Sprite '{name}' is empty!")
+    lengths = [len(r) for r in sprite]
+    if expected_width is not None:
+        if any(l != expected_width for l in lengths):
+            bad_rows = [i for i, l in enumerate(lengths) if l != expected_width]
+            raise ValueError(
+                f"[BUG] Sprite '{name}' rows {bad_rows} have wrong width "
+                f"(expected {expected_width}, got {[lengths[i] for i in bad_rows]})"
+            )
+    if len(set(lengths)) != 1:
+        bad_rows = [i for i, l in enumerate(lengths) if l != lengths[0]]
+        raise ValueError(
+            f"[BUG] Sprite '{name}' has inconsistent row widths! "
+            f"Variable rows: {bad_rows}, widths: {[lengths[i] for i in bad_rows]}"
+        )
+
 
 # ── Cat pixel sprite (14w × 15h) ────────────────────────────
 # Chars:  O = main orange  D = dark orange  L = light orange
@@ -76,7 +111,14 @@ LEG_FRAMES = [
     (" OO        OO ", " OO        OO ", " O           O", " O           O"),
 ]
 
-CAT_BOUNCE_Y = [0, -4, 0, -4]  # bounce per frame
+CAT_BOUNCE_Y = [0, -4, 0, -4]  # bounce per frame (pixels)
+
+# ── Validate sprites at module load ───────────────────────────
+_validate_sprite("CAT_FIXED", CAT_FIXED, expected_width=14)
+assert len(LEG_FRAMES) == len(CAT_BOUNCE_Y), (
+    f"[BUG] LEG_FRAMES count ({len(LEG_FRAMES)}) != CAT_BOUNCE_Y count ({len(CAT_BOUNCE_Y)})"
+)
+NUM_FRAMES = len(LEG_FRAMES)  # canonical frame count
 
 # ── Electric guitar sprite (8w × 14h) ───────────────────────
 # Chars: B = cyan body  D = dark cyan edge  N = neck wood  S = string/rosegold
@@ -97,6 +139,9 @@ GUITAR_SPRITE = [
     "      SS      ",   # 13 strings peeking below
 ]
 
+# ── Validate guitar sprite ────────────────────────────────────
+_validate_sprite("GUITAR_SPRITE", GUITAR_SPRITE, expected_width=14)
+
 # ── Drawing helpers ──────────────────────────────────────────
 
 def draw_pixel_sprite(draw, x0, y0, sprite, color_map, cell):
@@ -113,6 +158,7 @@ def draw_pixel_sprite(draw, x0, y0, sprite, color_map, cell):
 
 def draw_cat(draw, cx, cy, frame_idx, cell):
     """Draw the full pixel cat centred at (cx, cy) = centre-bottom of feet."""
+    frame_idx = max(0, min(frame_idx, NUM_FRAMES - 1))  # clamp
     sprite_w = 14  # sprite width in pixels
     # Rows actually used: CAT_FIXED rows 1-11 (11 visible rows) + 3 leg rows = 14 rows
     used_rows = 14
@@ -172,6 +218,7 @@ def draw_cat(draw, cx, cy, frame_idx, cell):
 
 def draw_guitar(draw, cx, ground_y, frame_idx, cell):
     """Draw electric guitar sprite standing on the ground."""
+    frame_idx = max(0, min(frame_idx, NUM_FRAMES - 1))  # clamp
     w = 14  # sprite width
     h = 14  # sprite height
     x0 = cx - (w * cell) // 2
@@ -190,6 +237,7 @@ def draw_guitar(draw, cx, ground_y, frame_idx, cell):
 
 def create_frame(frame_idx):
     """Render a single frame as a PIL Image."""
+    frame_idx = max(0, min(frame_idx, NUM_FRAMES - 1))  # clamp
     img = Image.new('RGBA', (W, H), BG)
     draw = ImageDraw.Draw(img)
 
@@ -265,8 +313,13 @@ def create_frame(frame_idx):
         tw2 = len(badge_text) * 8
     badge_x = cat_cx - tw2 // 2 - 10
     badge_y = H - 30 - 38  # above the cat, at y=152
-    draw.rounded_rectangle([badge_x, badge_y, badge_x + tw2 + 20, badge_y + 22],
-                            radius=6, fill=(219, 39, 119, 60))
+    # rounded_rectangle guard: fall back to plain rect on older Pillow
+    if hasattr(draw, 'rounded_rectangle'):
+        draw.rounded_rectangle([badge_x, badge_y, badge_x + tw2 + 20, badge_y + 22],
+                                radius=6, fill=(219, 39, 119, 60))
+    else:
+        draw.rectangle([badge_x, badge_y, badge_x + tw2 + 20, badge_y + 22],
+                        fill=(219, 39, 119, 60))
     draw.text((cat_cx, H - 30 - 18), badge_text,
               fill=CAT_LITE, font=small_font, anchor="mm")
 
@@ -276,8 +329,8 @@ def create_frame(frame_idx):
 # ── Main ─────────────────────────────────────────────────────
 def main():
     frames = []
-    for i in range(4):
-        print(f"Rendering frame {i + 1}/4...")
+    for i in range(NUM_FRAMES):
+        print(f"Rendering frame {i + 1}/{NUM_FRAMES}...")
         frame = create_frame(i)
         frames.append(frame)
 
@@ -285,18 +338,35 @@ def main():
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
 
     # Save as GIF with transparency kept, loop forever
-    frames[0].save(
-        out_path,
-        save_all=True,
-        append_images=frames[1:],
-        duration=FPS,
-        loop=0,
-        disposal=2,  # clear each frame before drawing next
-        optimize=False,
-    )
+    try:
+        frames[0].save(
+            out_path,
+            save_all=True,
+            append_images=frames[1:],
+            duration=FPS,
+            loop=0,
+            disposal=2,  # clear each frame before drawing next
+            optimize=True,
+        )
+    except Exception as e:
+        print(f"[ERROR] Failed to save GIF: {e}")
+        sys.exit(1)
+
+    # ── Post-save integrity check ──
+    if not os.path.isfile(out_path):
+        print(f"[ERROR] GIF was not created at {out_path}")
+        sys.exit(1)
+
+    size_bytes = os.path.getsize(out_path)
+    if size_bytes == 0:
+        print(f"[ERROR] GIF is empty (0 bytes)")
+        os.remove(out_path)
+        sys.exit(1)
+
     print(f"[OK] GIF saved to {out_path}")
     print(f"  Dimensions: {W}x{H}")
     print(f"  Frames: {len(frames)} @ {FPS}ms each")
+    print(f"  File size: {size_bytes:,} bytes ({size_bytes / 1024:.1f} KB)")
 
 
 if __name__ == "__main__":
