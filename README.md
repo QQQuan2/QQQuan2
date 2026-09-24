@@ -37,7 +37,7 @@
 
 Read top-to-bottom, or jump to what you came for:
 
-| 🧑‍💻 [About Me](#about-me) | 🚀 [Featured Projects](#featured-projects) | 📊 [GitHub Analytics](#github-analytics) | 🛠️ [Tech Stack](#tech-stack) |
+| 🧑‍💻 [About Me](#‍-about-me) | 🚀 [Featured Projects](#-featured-projects) | 📊 [GitHub Analytics](#-github-analytics) | 🛠️ [Tech Stack](#️-tech-stack) |
 | :---: | :---: | :---: | :---: |
 | Who I am, what I'm into, what I'm looking for | Two real projects you can click into | Streak, lifetime totals, contribution snake | What I reach for when I build |
 
