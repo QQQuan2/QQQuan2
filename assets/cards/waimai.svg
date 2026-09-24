@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 588 460" width="588" height="460" role="img" aria-label="Waimai Delivery">
+<defs>
+<linearGradient id="bgwaimai" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#06b6d4"/><stop offset="55%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#6366f1"/></linearGradient>
+<clipPath id="clipwaimai"><rect width="560" height="432" rx="22"/></clipPath>
+<filter id="shwaimai" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#0b1020" flood-opacity="0.30"/></filter>
+</defs>
+<g transform="translate(14,14)">
+<rect width="560" height="432" rx="22" fill="#0b1020" filter="url(#shwaimai)"/>
+<g clip-path="url(#clipwaimai)">
+<rect width="560" height="432" fill="url(#bgwaimai)"/>
+<circle cx="548" cy="-30" r="175" fill="#ffffff" fill-opacity="0.10"/>
+<circle cx="14" cy="438" r="120" fill="#ffffff" fill-opacity="0.07"/>
+<circle cx="464" cy="358" r="60" fill="#ffffff" fill-opacity="0.06"/>
+</g>
+<rect x="0.75" y="0.75" width="558" height="430" rx="21.25" fill="none" stroke="#ffffff" stroke-opacity="0.30" stroke-width="1.5"/>
+<rect x="36" y="36" width="48" height="48" rx="15" fill="#ffffff" fill-opacity="0.20"/>
+<text x="60.0" y="69.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="26" text-anchor="middle">🍜</text>
+<text x="100.0" y="60.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="25.0" font-weight="700" fill="#ffffff" fill-opacity="1.00" text-anchor="start" letter-spacing="-0.2">Waimai Delivery</text>
+<text x="100.0" y="81.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="14.5" font-weight="400" fill="#ffffff" fill-opacity="0.82" text-anchor="start" letter-spacing="0">外卖配送系统 · full-stack, 4 roles</text>
+<rect x="36.0" y="110.0" width="65.0" height="22" rx="11.0" fill="#ffffff" fill-opacity="0.16" stroke="#ffffff" stroke-opacity="0.30"/>
+<text x="68.5" y="125.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="13.0" font-weight="400" fill="#ffffff" fill-opacity="0.95" text-anchor="middle" letter-spacing="0">Python</text>
+<rect x="109.0" y="110.0" width="58.0" height="22" rx="11.0" fill="#ffffff" fill-opacity="0.16" stroke="#ffffff" stroke-opacity="0.30"/>
+<text x="138.0" y="125.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="13.0" font-weight="400" fill="#ffffff" fill-opacity="0.95" text-anchor="middle" letter-spacing="0">Flask</text>
+<rect x="175.0" y="110.0" width="121.9" height="22" rx="11.0" fill="#ffffff" fill-opacity="0.16" stroke="#ffffff" stroke-opacity="0.30"/>
+<text x="235.9" y="125.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="13.0" font-weight="400" fill="#ffffff" fill-opacity="0.95" text-anchor="middle" letter-spacing="0">SQLite / MySQL</text>
+<rect x="304.9" y="110.0" width="68.9" height="22" rx="11.0" fill="#ffffff" fill-opacity="0.16" stroke="#ffffff" stroke-opacity="0.30"/>
+<text x="339.3" y="125.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="13.0" font-weight="400" fill="#ffffff" fill-opacity="0.95" text-anchor="middle" letter-spacing="0">4 roles</text>
+<rect x="381.7" y="110.0" width="77.1" height="22" rx="11.0" fill="#ffffff" fill-opacity="0.16" stroke="#ffffff" stroke-opacity="0.30"/>
+<text x="420.3" y="125.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="13.0" font-weight="400" fill="#ffffff" fill-opacity="0.95" text-anchor="middle" letter-spacing="0">77 tests</text>
+<line x1="36" y1="158.0" x2="524" y2="158.0" stroke="#ffffff" stroke-opacity="0.24"/>
+<text x="36.0" y="184.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" fill-opacity="0.92" text-anchor="start" letter-spacing="0">A full-function food delivery system with four interlinked</text>
+<text x="36.0" y="208.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" fill-opacity="0.92" text-anchor="start" letter-spacing="0">roles - customers, merchants, riders and admin - wired through a</text>
+<text x="36.0" y="232.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" fill-opacity="0.92" text-anchor="start" letter-spacing="0">real order lifecycle: address book, eco-friendly tableware,</text>
+<text x="36.0" y="256.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" fill-opacity="0.92" text-anchor="start" letter-spacing="0">live dashboards and end-to-end order tracking.</text>
+<path d="M 36.0 296.0 l 3.6 3.8 l 7.2 -8.2" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.95"/>
+<text x="54.0" y="300.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" fill-opacity="0.95" text-anchor="start" letter-spacing="0">Role-based sessions &amp; permissions</text>
+<path d="M 36.0 322.0 l 3.6 3.8 l 7.2 -8.2" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.95"/>
+<text x="54.0" y="326.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" fill-opacity="0.95" text-anchor="start" letter-spacing="0">Rider dispatch + live status</text>
+<path d="M 36.0 348.0 l 3.6 3.8 l 7.2 -8.2" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.95"/>
+<text x="54.0" y="352.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" fill-opacity="0.95" text-anchor="start" letter-spacing="0">77-test smoke suite (real CI)</text>
+<path d="M 36.0 374.0 l 3.6 3.8 l 7.2 -8.2" fill="none" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" stroke-opacity="0.95"/>
+<text x="54.0" y="378.0" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',Roboto,Helvetica,Arial,sans-serif" font-size="15.5" font-weight="400" fill="#ffffff" fill-opacity="0.95" text-anchor="start" letter-spacing="0">SQLite for dev, MySQL for prod</text>
+</g>
+</svg>

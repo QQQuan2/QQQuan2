@@ -78,18 +78,9 @@ I learn faster when I ship something ugly than when I plan something perfect, so
 <tr>
 <td width="50%" valign="top" align="center">
 
-<h3 align="center">🍜 外卖配送系统 — <em>Waimai Delivery</em></h3>
-
-<p align="center"><strong>Python · Flask · SQLite / MySQL · 4 roles · 77 tests</strong></p>
-
-A full-function food delivery system with four interlinked roles — <strong>customers, merchants, riders, and admin</strong> — wired through a real order lifecycle: address book, eco-friendly tableware options, interactive dashboards, and end-to-end order tracking.
-
-<ul>
-  <li>🔐 Role-based sessions &amp; permissions</li>
-  <li>🛵 Rider dispatch + live status</li>
-  <li>🧪 77-test smoke suite (real CI, not "TODO: write tests")</li>
-  <li>💾 SQLite for local dev, MySQL for prod-shaped runs</li>
-</ul>
+<a href="https://qqquan2.github.io/QQQuan2/waimai-preview/demo/">
+  <img src="https://qqquan2.github.io/QQQuan2/assets/cards/waimai.svg" width="100%" alt="Waimai Delivery — full-stack food delivery system with customers, merchants, riders and admin roles, backed by a 77-test smoke suite"/>
+</a>
 
 <p align="center">
   <a href="https://qqquan2.github.io/QQQuan2/waimai-preview/demo/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" alt="Live Demo"/></a>&nbsp;
@@ -99,18 +90,9 @@ A full-function food delivery system with four interlinked roles — <strong>cus
 </td>
 <td width="50%" valign="top" align="center">
 
-<h3 align="center">📊 CSV 数据仪表盘 — <em>CSV Dashboard</em></h3>
-
-<p align="center"><strong>HTML · CSS · JavaScript · Chart.js · 100% frontend</strong></p>
-
-A pure-frontend dashboard that turns uploaded CSV files into interactive visualizations. No backend, no upload server, no data leaves your browser.
-
-<ul>
-  <li>⚡ Drag-and-drop + instant preview</li>
-  <li>📈 Multiple chart types (bar / line / pie / scatter)</li>
-  <li>🌓 Dark / light theme toggle</li>
-  <li>🧹 Built-in statistical summaries</li>
-</ul>
+<a href="https://qqquan2.github.io/QQQuan2/csv-dashboard/">
+  <img src="https://qqquan2.github.io/QQQuan2/assets/cards/csv-dashboard.svg" width="100%" alt="CSV Dashboard — pure-frontend CSV visualisation built with Chart.js, no backend and no upload server"/>
+</a>
 
 <p align="center">
   <a href="https://qqquan2.github.io/QQQuan2/csv-dashboard/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" alt="Live Demo"/></a>&nbsp;
@@ -120,6 +102,21 @@ A pure-frontend dashboard that turns uploaded CSV files into interactive visuali
 </td>
 </tr>
 </table>
+
+<details>
+<summary>📋 The same two projects, as text</summary>
+
+<br/>
+
+**🍜 Waimai Delivery** — *Python · Flask · SQLite / MySQL · 4 roles · 77 tests*
+
+A full-function food delivery system with four interlinked roles — customers, merchants, riders and admin — wired through a real order lifecycle: address book, eco-friendly tableware, live dashboards and end-to-end order tracking.
+
+**📊 CSV Dashboard** — *HTML · CSS · JavaScript · Chart.js · 100% frontend*
+
+A pure-frontend dashboard that turns uploaded CSV files into interactive visualizations. Drag, drop, pick a chart type and explore — no backend, no upload server, and your data never leaves the browser.
+
+</details>
 
 <!-- ==================== WORKING ON / NOW ==================== -->
 ## 🛠️ What I'm working on right now
