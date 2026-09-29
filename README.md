@@ -110,7 +110,7 @@ I learn faster when I ship something ugly than when I plan something perfect, so
 
 <p align="center">
   <a href="https://github.com/QQQuan2/QQQuan2/tree/main/yuanqi-email-agent"><img src="https://img.shields.io/badge/📂_Project_Docs-20B2AA?style=for-the-badge" alt="Project Docs"/></a>&nbsp;
-  <img src="https://img.shields.io/badge/✅_Published_Live_Agent-10B981?style=for-the-badge" alt="Published"/>
+  <a href="https://github.com/QQQuan2/QQQuan2/blob/main/yuanqi-email-agent/assets/08-published.png"><img src="https://img.shields.io/badge/✅_Published_Live_Agent-10B981?style=for-the-badge" alt="Published — click to view the live agent screenshot"/></a>
 </p>
 
 </td>
