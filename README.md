@@ -39,7 +39,7 @@ Read top-to-bottom, or jump to what you came for:
 
 | 🧑‍💻 [About Me](#‍-about-me) | 🚀 [Featured Projects](#-featured-projects) | 📊 [GitHub Analytics](#-github-analytics) | 🛠️ [Tech Stack](#️-tech-stack) |
 | :---: | :---: | :---: | :---: |
-| Who I am, what I'm into, what I'm looking for | Two real projects you can click into | Streak, lifetime totals, contribution snake | What I reach for when I build |
+| Who I am, what I'm into, what I'm looking for | Three real projects you can click into | Streak, lifetime totals, contribution snake | What I reach for when I build |
 
 </div>
 
@@ -101,10 +101,24 @@ I learn faster when I ship something ugly than when I plan something perfect, so
 
 </td>
 </tr>
+<tr>
+<td colspan="2" valign="top" align="center">
+
+<a href="https://github.com/QQQuan2/QQQuan2/tree/main/yuanqi-email-agent">
+  <img src="https://qqquan2.github.io/QQQuan2/assets/cards/email-agent.svg" width="50%" alt="AI Email Agent — a published conversational agent built on Tencent Yuanqi, chaining a RAG knowledge-retrieval node with an LLM node in a node-based workflow"/>
+</a>
+
+<p align="center">
+  <a href="https://github.com/QQQuan2/QQQuan2/tree/main/yuanqi-email-agent"><img src="https://img.shields.io/badge/📂_Project_Docs-20B2AA?style=for-the-badge" alt="Project Docs"/></a>&nbsp;
+  <img src="https://img.shields.io/badge/✅_Published_Live_Agent-10B981?style=for-the-badge" alt="Published"/>
+</p>
+
+</td>
+</tr>
 </table>
 
 <details>
-<summary>📋 The same two projects, as text</summary>
+<summary>📋 The same three projects, as text</summary>
 
 <br/>
 
@@ -115,6 +129,10 @@ A full-function food delivery system with four interlinked roles — customers, 
 **📊 CSV Dashboard** — *HTML · CSS · JavaScript · Chart.js · 100% frontend*
 
 A pure-frontend dashboard that turns uploaded CSV files into interactive visualizations. Drag, drop, pick a chart type and explore — no backend, no upload server, and your data never leaves the browser.
+
+**📧 AI Email Agent** — *Tencent Yuanqi · AI Agent · RAG · Workflow · Published*
+
+A published conversational agent built on Tencent Yuanqi. A node-based workflow chains a knowledge-retrieval (RAG) node with an LLM node, backed by an external email-format knowledge base — no model retraining needed to enforce the output structure. Full architecture docs and real debugging lessons included.
 
 </details>
 
