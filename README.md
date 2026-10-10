@@ -136,6 +136,17 @@ A published conversational agent built on Tencent Yuanqi. A node-based workflow 
 
 </details>
 
+<!-- ==================== TIDAL GARDEN ISLAND ==================== -->
+<div align="center">
+
+<a href="https://qqquan2.github.io/QQQuan2/assets/island/tidal-garden.svg" target="_blank">
+  <img src="https://qqquan2.github.io/QQQuan2/assets/island/tidal-garden.svg" width="60%" alt="A floating tidal-garden island: sand isle with a tide pool, a pink octopus, corals, a starfish and a wooden sign, gently drifting over the sea." title="Tidal Garden — my little floating island"/>
+</a>
+
+<sub>🏝️ <b>Tidal Garden</b> — a hand-drawn isometric island I built as an SVG. Watch long enough and the octopus breathes.</sub>
+
+</div>
+
 <!-- ==================== WORKING ON / NOW ==================== -->
 ## 🛠️ What I'm working on right now
 
