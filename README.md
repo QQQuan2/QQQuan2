@@ -145,6 +145,10 @@ A published conversational agent built on Tencent Yuanqi. A node-based workflow 
 
 <sub>🏝️ <b>Tidal Garden</b> — a hand-drawn isometric island I built as an SVG. Watch long enough and the octopus breathes.</sub>
 
+<br/>
+
+<sub><a href="https://qqquan2.github.io/QQQuan2/island/">▶ Open the interactive version</a> — hover anything, click the octopus, and the whole isle drifts while you look.</sub>
+
 </div>
 
 <!-- ==================== WORKING ON / NOW ==================== -->
