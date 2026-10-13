@@ -76,65 +76,50 @@ I learn faster when I ship something ugly than when I plan something perfect, so
 
 <table align="center" width="100%">
 <tr>
-<td width="50%" valign="top" align="center">
+<td width="33%" valign="top">
 
-<a href="https://qqquan2.github.io/QQQuan2/waimai-preview/demo/">
-  <img src="https://qqquan2.github.io/QQQuan2/assets/cards/waimai.svg" width="100%" alt="Waimai Delivery — full-stack food delivery system with customers, merchants, riders and admin roles, backed by a 77-test smoke suite"/>
-</a>
+### 🍜 [Waimai Delivery](https://qqquan2.github.io/QQQuan2/waimai-preview/demo/)
 
-<p align="center">
-  <a href="https://qqquan2.github.io/QQQuan2/waimai-preview/demo/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" alt="Live Demo"/></a>&nbsp;
+*Python · Flask · SQLite/MySQL · 4 roles · 77 tests*
+
+A full-function food delivery system: customers, merchants, riders and admin wired through a real order lifecycle with live dashboards and end-to-end tracking.
+
+<p>
+  <a href="https://qqquan2.github.io/QQQuan2/waimai-preview/demo/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" alt="Live Demo"/></a>
   <a href="https://github.com/QQQuan2/QQQuan2/tree/main/waimai-delivery-system"><img src="https://img.shields.io/badge/📂_Source-20B2AA?style=for-the-badge" alt="Source"/></a>
 </p>
 
 </td>
-<td width="50%" valign="top" align="center">
+<td width="33%" valign="top">
 
-<a href="https://qqquan2.github.io/QQQuan2/csv-dashboard/">
-  <img src="https://qqquan2.github.io/QQQuan2/assets/cards/csv-dashboard.svg" width="100%" alt="CSV Dashboard — pure-frontend CSV visualisation built with Chart.js, no backend and no upload server"/>
-</a>
+### 📊 [CSV Dashboard](https://qqquan2.github.io/QQQuan2/csv-dashboard/)
 
-<p align="center">
-  <a href="https://qqquan2.github.io/QQQuan2/csv-dashboard/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" alt="Live Demo"/></a>&nbsp;
+*HTML · CSS · JavaScript · Chart.js · 100% frontend*
+
+Drag, drop and visualize CSV files in the browser. No backend, no upload server — your data never leaves the page.
+
+<p>
+  <a href="https://qqquan2.github.io/QQQuan2/csv-dashboard/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" alt="Live Demo"/></a>
   <a href="https://github.com/QQQuan2/QQQuan2/tree/main/csv-dashboard"><img src="https://img.shields.io/badge/📂_Source-20B2AA?style=for-the-badge" alt="Source"/></a>
 </p>
 
 </td>
-</tr>
-<tr>
-<td colspan="2" valign="top" align="center">
+<td width="33%" valign="top">
 
-<a href="https://github.com/QQQuan2/QQQuan2/tree/main/yuanqi-email-agent">
-  <img src="https://qqquan2.github.io/QQQuan2/assets/cards/email-agent.svg" width="50%" alt="AI Email Agent — a published conversational agent built on Tencent Yuanqi, chaining a RAG knowledge-retrieval node with an LLM node in a node-based workflow"/>
-</a>
+### 📧 [AI Email Agent](https://yuanqi.tencent.com)
 
-<p align="center">
-  <a href="https://github.com/QQQuan2/QQQuan2/tree/main/yuanqi-email-agent"><img src="https://img.shields.io/badge/📂_Project_Docs-20B2AA?style=for-the-badge" alt="Project Docs"/></a>&nbsp;
-  <a href="https://yuanqi.tencent.com"><img src="https://img.shields.io/badge/✅_Published_Live_Agent-10B981?style=for-the-badge" alt="Published — open the live agent on Tencent Yuanqi"/></a>
+*Tencent Yuanqi · AI Agent · RAG · Workflow · Published*
+
+A published conversational agent on Tencent Yuanqi. A node-based workflow chains RAG knowledge retrieval with an LLM, backed by an email-format knowledge base.
+
+<p>
+  <a href="https://yuanqi.tencent.com"><img src="https://img.shields.io/badge/🤖_Open_Agent-10B981?style=for-the-badge" alt="Open the live agent on Tencent Yuanqi"/></a>
+  <a href="https://github.com/QQQuan2/QQQuan2/tree/main/yuanqi-email-agent"><img src="https://img.shields.io/badge/📂_Docs-20B2AA?style=for-the-badge" alt="Project Docs"/></a>
 </p>
 
 </td>
 </tr>
 </table>
-
-<details>
-<summary>📋 The same three projects, as text</summary>
-
-<br/>
-
-**🍜 Waimai Delivery** — *Python · Flask · SQLite / MySQL · 4 roles · 77 tests*
-
-A full-function food delivery system with four interlinked roles — customers, merchants, riders and admin — wired through a real order lifecycle: address book, eco-friendly tableware, live dashboards and end-to-end order tracking.
-
-**📊 CSV Dashboard** — *HTML · CSS · JavaScript · Chart.js · 100% frontend*
-
-A pure-frontend dashboard that turns uploaded CSV files into interactive visualizations. Drag, drop, pick a chart type and explore — no backend, no upload server, and your data never leaves the browser.
-
-**📧 AI Email Agent** — *Tencent Yuanqi · AI Agent · RAG · Workflow · Published*
-
-A published conversational agent built on Tencent Yuanqi. A node-based workflow chains a knowledge-retrieval (RAG) node with an LLM node, backed by an external email-format knowledge base — no model retraining needed to enforce the output structure. Full architecture docs and real debugging lessons included.
-
-</details>
 
 <!-- ==================== TIDAL GARDEN ISLAND ==================== -->
 <div align="center">
