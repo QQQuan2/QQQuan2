@@ -37,9 +37,9 @@
 
 Read top-to-bottom, or jump to what you came for:
 
-| 🧑‍💻 [About Me](#‍-about-me) | 🚀 [Featured Projects](#-featured-projects) | 🚧 [监工中](#-监工中--work-in-progress) | 📊 [GitHub Analytics](#-github-analytics) | 🛠️ [Tech Stack](#️-tech-stack) |
-| :---: | :---: | :---: | :---: | :---: |
-| Who I am & what I'm into | Three projects you can click into | What's on my desk right now | Streak, totals, snake | The tools I reach for |
+| 🧑‍💻 [About Me](#‍-about-me) | 🚀 [Featured Projects](#-featured-projects) | 🚧 [监工中](#-监工中--work-in-progress) | 📊 [GitHub Analytics](#-github-analytics) | 🛠️ [Tech Stack](#️-tech-stack) | 📮 [留言板](#-留言板--guestbook) |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| Who I am & what I'm into | Three projects you can click into | What's on my desk right now | Streak, totals, snake | The tools I reach for | Leave a note or feedback |
 
 </div>
 
@@ -121,6 +121,15 @@ A published conversational agent on Tencent Yuanqi. A node-based workflow chains
 </tr>
 </table>
 
+<!-- ==================== 监工中 / WORK IN PROGRESS ==================== -->
+## 🚧 监工中 · Work In Progress
+
+<div align="center">
+
+<sub>Hand-updated, not automated — this is what is genuinely sitting on my desk unfinished right now. Percentages are honest self-assessments, not CI reports. <code>Last touched: 2026-10</code></sub>
+
+</div>
+
 <!-- ==================== TIDAL GARDEN ISLAND ==================== -->
 <div align="center">
 
@@ -134,20 +143,13 @@ A published conversational agent on Tencent Yuanqi. A node-based workflow chains
 
 <sub><a href="https://qqquan2.github.io/QQQuan2/island/">▶ Open the interactive version</a> — hover anything, click the octopus, and the whole isle drifts while you look.</sub>
 
-</div>
+<br/>
 
-<!-- ==================== 监工中 / WORK IN PROGRESS ==================== -->
-## 🚧 监工中 · Work In Progress
-
-<div align="center">
-
-<sub>Hand-updated, not automated — this is what is genuinely sitting on my desk unfinished right now. Percentages are honest self-assessments, not CI reports. <code>Last touched: 2026-10</code></sub>
+<sub>💬 <b>吐槽角</b> — 别人做的都好好看，我做的咋这么丑。（占位吐槽一条，想写什么直接改这一行，长短不限）</sub>
 
 </div>
 
 <br/>
-
-### 🔨 施工中 · Now building
 
 <table align="center" width="100%">
 <tr>
@@ -185,10 +187,12 @@ Same idea, second slot. Delete the whole <code>&lt;td&gt;</code> block if there 
 
 > A single sentence describing exactly where I am stuck — replace me. Nothing blocking? Change the heading to `畅通无阻 · No blockers this week` and move on.
 
-### 🧊 冰柜里 · On the bench
+### 💭 奇思妙想 · Shower thoughts
 
-- [ ] An idea waiting for a free weekend
-- [ ] Another idea, parked until one of the above ships
+漫无边际的小想法，没有时间表，没有优先级——指不定哪天捡起来做，也可能永远躺在这里。
+
+- [ ] An idea that arrived mid-shower — replace me
+- [ ] Another random spark that refuses to leave — replace me
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
@@ -257,8 +261,54 @@ The fastest way to reach me is **opening an issue** on one of my repos — I rea
 | :--- | :--- |
 | 🐙 [github.com/QQQuan2](https://github.com/QQQuan2) | Code, projects, the occasional commit streak |
 | 🌐 [qqquan2.github.io/QQQuan2](https://qqquan2.github.io/QQQuan2/) | A slightly more visual version of me |
+| ✉️ [1712045313@qq.com](mailto:1712045313@qq.com) | For anything too long for an issue box |
 
 </div>
+
+<br/>
+
+<!-- ==================== 留言板 / GUESTBOOK ==================== -->
+## 📮 留言板 · Guestbook
+
+<div align="center">
+
+<sub>README 里嵌不了真正的评论框（GitHub 不允许页面跑脚本），所以把留言板做成了三张贴在墙上的便签——点哪一张，话都能递到我手里。对项目、界面、代码风格的评价和建议，都欢迎，骂得有道理我也接受。</sub>
+
+</div>
+
+<br/>
+
+<table align="center" width="100%">
+<tr>
+<td width="33%" valign="top" align="center">
+
+### 📌 留张便签
+
+最推荐的方式。评论、建议、指出 bug，开个 Issue 就算给我留言——会进我的通知列表，看到必回。
+
+<a href="https://github.com/QQQuan2/QQQuan2/issues/new?title=%F0%9F%93%AE%20README%20%E7%95%99%E8%A8%80"><img src="https://img.shields.io/badge/%F0%9F%93%8C%20%E5%86%99%E4%B8%8B%E7%95%99%E8%A8%80-FFD93D?style=for-the-badge&labelColor=1f2937" alt="通过 Issue 留言"/></a>
+
+</td>
+<td width="33%" valign="top" align="center">
+
+### ✉️ 邮件直投
+
+想聊得细一点、或是不想公开说的话，直接发邮件——不需要任何提前配置，点开就能写。
+
+<a href="mailto:1712045313@qq.com?subject=%F0%9F%93%AE%20%E6%9D%A5%E8%87%AA%20README%20%E7%9A%84%E7%95%99%E8%A8%80"><img src="https://img.shields.io/badge/%E2%9C%89%20%E5%8F%91%E5%B0%81%E9%82%AE%E4%BB%B6-FF8FA3?style=for-the-badge&labelColor=1f2937" alt="发邮件给我"/></a>
+
+</td>
+<td width="33%" valign="top" align="center">
+
+### 🗒️ 掌柜的便签
+
+这块留给我自己，不定时贴一条近况、回复合集、或者本周最想安利的东西。
+
+<sub>—— replace me：本周速记，随手写 ——</sub>
+
+</td>
+</tr>
+</table>
 
 <br/>
 
