@@ -30,20 +30,6 @@
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
-<!-- ==================== NAVIGATION / WHAT'S HERE ==================== -->
-## 🧭 What's here?
-
-<div align="center">
-
-Read top-to-bottom, or jump to what you came for:
-
-| 🧑‍💻 [About Me](#‍-about-me) | 🚀 [Featured Projects](#-featured-projects) | 🚧 [Work-In-Progress](#-work-in-progress) | 📊 [GitHub Analytics](#-github-analytics) | 🛠️ [Tech Stack](#️-tech-stack) | 📮 [Guestbook](#-guestbook) |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| Who I am & what I'm into | Three projects you can click into | What's on my desk right now | Streak, totals, snake | The tools I reach for | Leave a note or feedback |
-
-</div>
-
-<br/>
 
 <!-- ==================== ABOUT ME ==================== -->
 ## 🧑‍💻 About Me
@@ -137,7 +123,7 @@ A published conversational agent on Tencent Yuanqi. A node-based workflow chains
   <img src="https://qqquan2.github.io/QQQuan2/assets/island/tidal-garden.svg" width="60%" alt="A floating tidal-garden island: sand isle with a tide pool, a pink octopus, corals, a starfish and a wooden sign, gently drifting over the sea." title="Tidal Garden — my little floating island"/>
 </a>
 
-<sub>🏝️ <b>Tidal Garden</b> — a hand-drawn isometric island I built as an SVG. Watch long enough and the octopus breathes.</sub>
+<sub>🏝️ <b>Tidal Garden</b> — a island whose elements are interactive </sub>
 
 <br/>
 
@@ -162,7 +148,7 @@ Some codes help with drawing professional graphs
 
 `█░░░░░░░░░░░░░░░░░░░` &nbsp;**5%**
 
-<sub><b>Next →</b>Put a framework here and improve it later</sub>
+<sub><b>Next →</b>Put a framework and a link, improving it later</sub>
 
 
 </td>
