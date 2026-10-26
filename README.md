@@ -37,7 +37,7 @@
 
 Read top-to-bottom, or jump to what you came for:
 
-| 🧑‍💻 [About Me](#‍-about-me) | 🚀 [Featured Projects](#-featured-projects) | 🚧 [监工中](#-监工中--work-in-progress) | 📊 [GitHub Analytics](#-github-analytics) | 🛠️ [Tech Stack](#️-tech-stack) | 📮 [留言板](#-留言板--guestbook) |
+| 🧑‍💻 [About Me](#‍-about-me) | 🚀 [Featured Projects](#-featured-projects) | 🚧 [Work-In-Progress](#-work-in-progress) | 📊 [GitHub Analytics](#-github-analytics) | 🛠️ [Tech Stack](#️-tech-stack) | 📮 [Guestbook](#-guestbook) |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | Who I am & what I'm into | Three projects you can click into | What's on my desk right now | Streak, totals, snake | The tools I reach for | Leave a note or feedback |
 
@@ -145,7 +145,7 @@ A published conversational agent on Tencent Yuanqi. A node-based workflow chains
 
 <br/>
 
-<sub>💬 <b>吐槽角</b> — 做得好丑。</sub>
+<sub>💬 <b>Comment:</b> — 做得好丑。</sub>
 
 </div>
 
@@ -184,11 +184,12 @@ Some little ideas. Do it now or let it lie? This is a question.
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
 <!-- ==================== 留言板 / GUESTBOOK ==================== -->
-## 📮 留言板 · Guestbook
+## 📮 Guestbook
 
 <div align="center">
 
-<sub>README 里嵌不了真正的评论框（GitHub 不允许页面跑脚本），所以把留言板做成了三张贴在墙上的便签——点哪一张，话都能递到我手里。对项目、界面、代码风格的评价和建议，都欢迎，骂得有道理我也接受。</sub>
+<sub>I can't embed a real comment box in the README, so I made the message board like three sticky notes on a wall—click any one of them, and your message will get to me. Feedback and suggestions on the project, the interface, or the code style are all welcome, and if your criticism makes sense, I’ll take it too.
+Come on, I am eager to communicate with interesting people!</sub>
 
 </div>
 
@@ -198,29 +199,29 @@ Some little ideas. Do it now or let it lie? This is a question.
 <tr>
 <td width="33%" valign="top" align="center">
 
-### 📌 留张便签
+### 📌 Leave a note
 
-最推荐的方式。评论、建议、指出 bug，开个 Issue 就算给我留言——会进我的通知列表，看到必回。
+The most recommended way. I’ll get it in my notifications and will definitely reply when I see it.
 
 <a href="https://github.com/QQQuan2/QQQuan2/issues/new?title=%F0%9F%93%AE%20README%20%E7%95%99%E8%A8%80"><img src="https://img.shields.io/badge/%F0%9F%93%8C%20%E5%86%99%E4%B8%8B%E7%95%99%E8%A8%80-FFD93D?style=for-the-badge&labelColor=1f2937" alt="通过 Issue 留言"/></a>
 
 </td>
 <td width="33%" valign="top" align="center">
 
-### ✉️ 邮件直投
+### ✉️ Email
 
-想聊得细一点、或是不想公开说的话，直接发邮件——不需要任何提前配置，点开就能写。
+If you want to chat in more detail, or if you don't want to say it publicly, just send an email. My email address will be added automatically.
 
 <a href="mailto:1712045313@qq.com?subject=%F0%9F%93%AE%20%E6%9D%A5%E8%87%AA%20README%20%E7%9A%84%E7%95%99%E8%A8%80"><img src="https://img.shields.io/badge/%E2%9C%89%20%E5%8F%91%E5%B0%81%E9%82%AE%E4%BB%B6-FF8FA3?style=for-the-badge&labelColor=1f2937" alt="发邮件给我"/></a>
 
 </td>
 <td width="33%" valign="top" align="center">
 
-### 🗒️ 掌柜的便签
+### 🗒️ My own note
 
-这块留给我自己，不定时贴一条近况、回复合集、或者本周最想安利的东西。
+Something like...Reply to comment? Inspiration? Or what else
 
-<sub>—— replace me：本周速记，随手写 ——</sub>
+<sub>—— Why do I get tired so easily:) ——</sub>
 
 </td>
 </tr>
