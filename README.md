@@ -189,7 +189,7 @@ Come on, I am eager to communicate with interesting people!</sub>
 
 The most recommended way. I’ll get it in my notifications and will definitely reply when I see it.
 
-<a href="https://github.com/QQQuan2/QQQuan2/issues/new?title=%F0%9F%93%AE%20README%20%E7%95%99%E8%A8%80"><img src="https://img.shields.io/badge/%F0%9F%93%8C%20%E5%86%99%E4%B8%8B%E7%95%99%E8%A8%80-FFD93D?style=for-the-badge&labelColor=1f2937" alt="通过 Issue 留言"/></a>
+<a href="https://github.com/QQQuan2/QQQuan2/issues/new?title=%F0%9F%93%AE%20README%20%E7%95%99%E8%A8%80"><img src="https://img.shields.io/badge/%F0%9F%93%8C%20%E5%86%99%E4%B8%8B%E7%95%99%E8%A8%80-FFD93D?style=for-the-badge&labelColor=1f2937" alt="Note!"/></a>
 
 </td>
 <td width="33%" valign="top" align="center">
@@ -198,7 +198,7 @@ The most recommended way. I’ll get it in my notifications and will definitely 
 
 If you want to chat in more detail, or if you don't want to say it publicly, just send an email. My email address will be added automatically.
 
-<a href="mailto:1712045313@qq.com?subject=%F0%9F%93%AE%20%E6%9D%A5%E8%87%AA%20README%20%E7%9A%84%E7%95%99%E8%A8%80"><img src="https://img.shields.io/badge/%E2%9C%89%20%E5%8F%91%E5%B0%81%E9%82%AE%E4%BB%B6-FF8FA3?style=for-the-badge&labelColor=1f2937" alt="发邮件给我"/></a>
+<a href="mailto:1712045313@qq.com?subject=%F0%9F%93%AE%20%E6%9D%A5%E8%87%AA%20README%20%E7%9A%84%E7%95%99%E8%A8%80"><img src="https://img.shields.io/badge/%E2%9C%89%20%E5%8F%91%E5%B0%81%E9%82%AE%E4%BB%B6-FF8FA3?style=for-the-badge&labelColor=1f2937" alt="Email!"/></a>
 
 </td>
 <td width="33%" valign="top" align="center">
