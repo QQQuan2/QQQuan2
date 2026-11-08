@@ -165,7 +165,8 @@ Some codes help with drawing professional graphs
 Some little ideas. Do it now or let it lie? This is a question.
 
 - [ ] How did Tony Stark create Jarvis?
-- [ ] What's next...
+- [ ] How to build a Demo Model to show the process of some financial process
+- [ ? ] What's next...
 
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif" width="100%"/>
 
