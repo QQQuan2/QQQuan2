@@ -108,15 +108,15 @@ A published conversational agent on Tencent Yuanqi. A node-based workflow chains
 <tr>
 <td width="33%" valign="top">
 
-### 🎮 [Game Park](https://qqquan2.github.io/InventoRY/game-park/demo/)
+### 🎮 [Game Park](https://qqquan2.github.io/QQQuan2/game-park/demo/)
 
 *WeChat Mini Game · Canvas 2D · Vanilla JS · Zero deps · 8 games*
 
 A hand-written Canvas scene framework powering 8 complete mini games (Snake, Tetris, 2048, Minesweeper…) with a 12-level system, weather effects and local saves. Plays right in the browser via a tiny wx adapter.
 
 <p>
-  <a href="https://qqquan2.github.io/InventoRY/game-park/demo/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" alt="Live Demo"/></a>
-  <a href="https://github.com/QQQuan2/InventoRY/tree/main/game-park/minigame"><img src="https://img.shields.io/badge/📂_Source-20B2AA?style=for-the-badge" alt="Source"/></a>
+  <a href="https://qqquan2.github.io/QQQuan2/game-park/demo/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" alt="Live Demo"/></a>
+  <a href="https://github.com/QQQuan2/QQQuan2/tree/main/game-park/minigame"><img src="https://img.shields.io/badge/📂_Source-20B2AA?style=for-the-badge" alt="Source"/></a>
 </p>
 
 </td>

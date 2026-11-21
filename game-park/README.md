@@ -8,7 +8,7 @@
 
 ## 在线试玩
 
-[浏览器模拟版](https://qqquan2.github.io/InventoRY/game-park/demo/) — 无需安装，鼠标或触屏直接玩，存档保存在浏览器 localStorage。
+[浏览器模拟版](https://qqquan2.github.io/QQQuan2/game-park/demo/) — 无需安装，鼠标或触屏直接玩，存档保存在浏览器 localStorage。
 
 微信小游戏源码只用到 6 个 `wx` 接口（`createCanvas`、三个触摸事件、`getStorageSync` / `setStorageSync`）。浏览器版用 [demo/wx-shim.js](demo/wx-shim.js) 适配这 6 个接口，游戏逻辑代码与 [minigame/](minigame/) 完全一致：[demo/bundle.js](demo/bundle.js) 由 [tools/build-demo.js](tools/build-demo.js) 直接从小游戏源码打包生成，没有另写一套。
 
