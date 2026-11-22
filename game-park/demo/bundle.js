@@ -202,7 +202,8 @@ class DataManager {
         memory: { unlockedLevel: 1, highScore: 0, totalStars: 0 },
         minesweeper: { unlockedLevel: 1, highScore: 0, totalStars: 0 }
       },
-      lastPlayTime: Date.now()
+      lastPlayTime: Date.now(),
+      guideSeen: false
     };
   }
   
@@ -747,6 +748,66 @@ class HomeScene extends BaseScene {
     this.createButton(this.width - 100, 20, 80, 36, '🏆', () => {
       this.showStats();
     }, { bgColor: '#FFD93D', fontSize: 20 });
+
+    // 帮助按钮：随时重看新手指引
+    this.createButton(this.width - 100, 66, 80, 36, '❓ 帮助', () => {
+      this.showGuide();
+    }, { bgColor: '#4ECDC4', fontSize: 13 });
+
+    // 首次进入显示新手指引
+    if (!dataManager.data.guideSeen) {
+      this.showGuide();
+    }
+  }
+
+  // ========== 新手指引 ==========
+  showGuide() {
+    this.guide = {
+      active: true,
+      page: 0,
+      pages: [
+        {
+          icon: '🎮',
+          title: '欢迎来到游戏乐园！',
+          lines: ['这里有 8 款小游戏：', '贪吃蛇、俄罗斯方块、2048、', '扫雷、记忆翻牌等。', '点击卡片即可开始游戏。']
+        },
+        {
+          icon: '⭐',
+          title: '通关攒星星',
+          lines: ['每款游戏有 12 个关卡。', '通关可以拿到 1~3 颗星星，', '前一款游戏攒满 3 颗星星，', '就能解锁下一款新游戏。']
+        },
+        {
+          icon: '💾',
+          title: '进度自动保存',
+          lines: ['关卡、星星、最高分', '都会自动保存。', '随时回来继续冒险！']
+        }
+      ]
+    };
+  }
+
+  closeGuide() {
+    this.guide.active = false;
+    if (!dataManager.data.guideSeen) {
+      dataManager.data.guideSeen = true;
+      dataManager.save();
+    }
+  }
+
+  handleTouchEvents(touchEvents) {
+    // 引导层激活时拦截所有点击：点屏幕任意位置翻页
+    if (this.guide && this.guide.active) {
+      touchEvents.forEach(event => {
+        if (event.type === 'end') {
+          if (this.guide.page < this.guide.pages.length - 1) {
+            this.guide.page++;
+          } else {
+            this.closeGuide();
+          }
+        }
+      });
+      return;
+    }
+    super.handleTouchEvents(touchEvents);
   }
   
   initDecorations() {
@@ -927,6 +988,71 @@ class HomeScene extends BaseScene {
     
     // 底部装饰
     this.drawGround(ctx);
+
+    // 新手指引层（最后绘制，盖在最上面）
+    if (this.guide && this.guide.active) {
+      this.drawGuide(ctx);
+    }
+  }
+
+  drawGuide(ctx) {
+    const page = this.guide.pages[this.guide.page];
+
+    // 半透明遮罩
+    ctx.fillStyle = 'rgba(0,0,0,0.72)';
+    ctx.fillRect(0, 0, this.width, this.height);
+
+    // 引导卡片
+    const cw = this.width - 60;
+    const cx = 30;
+    const ch = 240;
+    const cy = (this.height - ch) / 2;
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    const r = 16;
+    ctx.moveTo(cx + r, cy);
+    ctx.lineTo(cx + cw - r, cy);
+    ctx.quadraticCurveTo(cx + cw, cy, cx + cw, cy + r);
+    ctx.lineTo(cx + cw, cy + ch - r);
+    ctx.quadraticCurveTo(cx + cw, cy + ch, cx + cw - r, cy + ch);
+    ctx.lineTo(cx + r, cy + ch);
+    ctx.quadraticCurveTo(cx, cy + ch, cx, cy + ch - r);
+    ctx.lineTo(cx, cy + r);
+    ctx.quadraticCurveTo(cx, cy, cx + r, cy);
+    ctx.closePath();
+    ctx.fill();
+
+    // 图标与标题
+    ctx.fillStyle = '#2C3E50';
+    ctx.textAlign = 'center';
+    ctx.font = '44px Arial';
+    ctx.fillText(page.icon, cx + cw / 2, cy + 62);
+    ctx.font = 'bold 20px Arial';
+    ctx.fillStyle = '#E74C3C';
+    ctx.fillText(page.title, cx + cw / 2, cy + 100);
+
+    // 正文
+    ctx.fillStyle = '#34495E';
+    ctx.font = '15px Arial';
+    page.lines.forEach((line, i) => {
+      ctx.fillText(line, cx + cw / 2, cy + 138 + i * 24);
+    });
+
+    // 页码圆点
+    for (let i = 0; i < this.guide.pages.length; i++) {
+      ctx.beginPath();
+      ctx.arc(cx + cw / 2 - 20 + i * 20, cy + ch - 24, 5, 0, Math.PI * 2);
+      ctx.fillStyle = i === this.guide.page ? '#E74C3C' : '#BDC3C7';
+      ctx.fill();
+    }
+
+    // 提示
+    ctx.fillStyle = 'rgba(255,255,255,0.85)';
+    ctx.font = '14px Arial';
+    ctx.fillText(
+      this.guide.page < this.guide.pages.length - 1 ? '点击任意位置继续 ▶' : '点击任意位置开始游戏 🎮',
+      this.width / 2, cy + ch + 36
+    );
   }
   
   drawCloud(ctx, cloud) {

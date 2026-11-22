@@ -22,7 +22,8 @@ class DataManager {
         memory: { unlockedLevel: 1, highScore: 0, totalStars: 0 },
         minesweeper: { unlockedLevel: 1, highScore: 0, totalStars: 0 }
       },
-      lastPlayTime: Date.now()
+      lastPlayTime: Date.now(),
+      guideSeen: false
     };
   }
   
