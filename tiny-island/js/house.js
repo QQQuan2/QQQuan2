@@ -364,45 +364,9 @@ export function buildHouse() {
 
   g.userData.interactive = 'home';
 
-  /* ---------------- roof display modes (M1.6) ---------------------- *
-   * Foundation for the M3 Full House / Dollhouse view. The UI arrives
-   * in M3 — this only guarantees the building components support the
-   * three states safely:
-   *   'full'   → roof visible, original materials (default)
-   *   'hidden' → roof group invisible
-   *   'ghost'  → every roof mesh swapped to ONE shared translucent
-   *              material, restored mesh-by-mesh afterwards.
-   * Materials are swapped per-mesh and never mutated, so shared
-   * materials (roofSolid / roofDark / wallMat / glassMat also used by
-   * the porch canopy, windows etc.) can never be corrupted. */
-  const ghostMat = new THREE.MeshStandardMaterial({
-    color: '#d2662c', transparent: true, opacity: 0.16,
-    roughness: 0.8, depthWrite: false, side: THREE.DoubleSide,
-  });
-  const roofMeshes = [];
-  roofGroup.traverse((o) => { if (o.isMesh) roofMeshes.push(o); });
-  let roofMode = 'full';
-  function setRoofMode(mode) {
-    if (!['full', 'hidden', 'ghost'].includes(mode)) return roofMode;
-    if (roofMode === 'ghost') {
-      for (const m of roofMeshes) m.material = m.userData.roofMat;
-    }
-    roofMode = mode;
-    roofGroup.visible = mode !== 'hidden';
-    if (mode === 'ghost') {
-      for (const m of roofMeshes) {
-        if (!m.userData.roofMat) m.userData.roofMat = m.material;
-        m.material = ghostMat;
-      }
-    }
-    return roofMode;
-  }
-
   return {
     group: g,
     roofGroup,
-    setRoofMode,
-    get roofDisplayMode() { return roofMode; },
     windowGlow: glassMat,
     lampGlow: lampMat,
     doorLight,

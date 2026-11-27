@@ -279,6 +279,28 @@ export function createWorld(canvas) {
     camBounds = min && max ? { min, max } : null;
   }
 
+  /* M2 portal: the interior window shows the REAL island. A second
+     camera sits just outside the cottage facade looking out to sea;
+     every interior frame renders the island scene into this target,
+     and interior.js maps the texture onto the window plane. main.js
+     hides the cottage around the renderOutside() call so the shell
+     never blocks the view. */
+  const PORTAL_W = 1024, PORTAL_H = 632;
+  const outsideCam = new THREE.PerspectiveCamera(55, PORTAL_W / PORTAL_H, 0.1, 900);
+  const outsideRT = new THREE.WebGLRenderTarget(PORTAL_W, PORTAL_H);
+  function setOutsideView(pos, target) {
+    outsideCam.position.copy(pos);
+    outsideCam.lookAt(target);
+    outsideCam.updateProjectionMatrix();
+  }
+  function renderOutside() {
+    const prev = renderer.getRenderTarget();
+    renderer.setRenderTarget(outsideRT);
+    renderer.render(scene, outsideCam);
+    renderer.setRenderTarget(prev);
+  }
+  function outsideTexture() { return outsideRT.texture; }
+
   function render() {
     if (camBounds) camera.position.clamp(camBounds.min, camBounds.max);
     renderer.render(activeScene, camera);
@@ -310,7 +332,9 @@ export function createWorld(canvas) {
     skyUniforms, oceanUniforms, cloudMat, starMat,
     sky, ocean, clouds, stars,
     CAM_POS, TARGET,
-    setScene, getScene, setLimits, setCamBounds, render,
+    outsideCam, outsideRT,
+    setScene, getScene, setLimits, setCamBounds,
+    setOutsideView, renderOutside, outsideTexture, render,
     resize, update,
   };
 }

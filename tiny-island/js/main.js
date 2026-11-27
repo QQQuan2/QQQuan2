@@ -83,6 +83,39 @@ function boot() {
 
   const interior = buildInterior();
 
+  // M2 portal: aim the outside camera out of the cottage's front
+  // window (facade +z, yawed by placement.rotY). The cottage itself is
+  // hidden during the RT pass so the shell never blocks the view.
+  if (typeof world.setOutsideView === 'function') {
+    const fwd = new THREE.Vector3(0, 0, 1).applyAxisAngle(
+      new THREE.Vector3(0, 1, 0), HOUSE.placement.rotY);
+    const base = house.group.position;
+    world.setOutsideView(
+      base.clone().addScaledVector(fwd, 3.0).add(new THREE.Vector3(0, 1.5, 0)),
+      base.clone().addScaledVector(fwd, 60).add(new THREE.Vector3(0, -2.6, 0))
+    );
+    if (interior.setOutsideTexture) interior.setOutsideTexture(world.outsideTexture());
+  }
+  function renderPortal() {
+    if (mode !== 'interior' || typeof world.renderOutside !== 'function') return;
+    // Hide the cottage shell AND the mailbox (it stands right in front
+    // of the facade) so the window shows an open sea view.
+    const mbox = structures.mailbox;
+    const mboxWas = mbox.visible;
+    const lanterns = structures.lanterns || [];
+    const lanternWas = lanterns.map((l) => l.visible);
+    house.group.visible = false;
+    mbox.visible = false;
+    lanterns.forEach((l) => { l.visible = false; });
+    try {
+      world.renderOutside();
+    } finally {
+      house.group.visible = true;
+      mbox.visible = mboxWas;
+      lanterns.forEach((l, i) => { l.visible = lanternWas[i]; });
+    }
+  }
+
   /* --------------------------- systems ---------------------------- */
   const atmosphere = createAtmosphere(world, {
     windowGlow: house.windowGlow,
@@ -852,6 +885,7 @@ function boot() {
     world.oceanUniforms.uShore.value = growth.shoreRadius();
     updateViewTween(dt);
     world.controls.update();
+    renderPortal();
     world.render();
   }
   requestAnimationFrame(loop);
