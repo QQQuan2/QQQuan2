@@ -167,11 +167,37 @@ function boot() {
     clearHover();
     fadeEl.classList.add('show');
     setTimeout(() => {
-      switchFn();
-      setTimeout(() => {
-        fadeEl.classList.remove('show');
-        setTimeout(() => { busy = false; }, 220);
-      }, 60);
+      try {
+        switchFn();
+      } catch (err) {
+        // M1 hotfix: never leave the user trapped behind the fade overlay.
+        // A stale / mixed ES module graph can make a scene switch throw; the
+        // original code then skipped the timer that removes .show, so the
+        // screen stayed a solid beige gradient forever with busy === true.
+        console.error('[travel] scene switch failed:', err);
+        try {
+          world.setScene(world.scene);
+          world.setLimits(ISLAND_LIMITS.min, ISLAND_LIMITS.max, ISLAND_LIMITS.minP, ISLAND_LIMITS.maxP);
+          if (typeof world.setCamBounds === 'function') world.setCamBounds(null);
+          mode = 'island';
+          document.body.dataset.mode = 'island';
+          updateHint();
+          if (savedView) {
+            world.controls.target.copy(savedView.target);
+            world.camera.position.copy(savedView.pos);
+            savedView = null;
+          }
+          toast('Could not switch scenes - back to the island. Please refresh.');
+        } catch (rollbackErr) {
+          console.error('[travel] rollback failed:', rollbackErr);
+        }
+      } finally {
+        // Always release the overlay and the click lock, even on failure.
+        setTimeout(() => {
+          fadeEl.classList.remove('show');
+          setTimeout(() => { busy = false; }, 220);
+        }, 60);
+      }
     }, 470);
     if (after) setTimeout(after, 560);
   }
@@ -185,7 +211,12 @@ function boot() {
     travel(() => {
       world.setScene(interior.scene);
       world.setLimits(INTERIOR_LIMITS.min, INTERIOR_LIMITS.max, INTERIOR_LIMITS.minP, INTERIOR_LIMITS.maxP);
-      world.setCamBounds(interior.CAM_BOUNDS.min, interior.CAM_BOUNDS.max);
+      // M1 hotfix: guard against a stale / mixed module graph (old interior.js
+      // has no CAM_BOUNDS, old world.js has no setCamBounds). Skipping the
+      // clamp is harmless; throwing here used to lock the fade overlay on.
+      if (typeof world.setCamBounds === 'function' && interior.CAM_BOUNDS) {
+        world.setCamBounds(interior.CAM_BOUNDS.min, interior.CAM_BOUNDS.max);
+      }
       world.controls.target.copy(interior.TARGET);
       world.camera.position.copy(interior.CAM_POS).add(new THREE.Vector3(0.25, 0.25, -0.9));
       interior.setNightTarget(atmosphere.nightLevel());
@@ -201,7 +232,7 @@ function boot() {
     travel(() => {
       world.setScene(world.scene);
       world.setLimits(ISLAND_LIMITS.min, ISLAND_LIMITS.max, ISLAND_LIMITS.minP, ISLAND_LIMITS.maxP);
-      world.setCamBounds(null);
+      if (typeof world.setCamBounds === 'function') world.setCamBounds(null);
       mode = 'island';
       document.body.dataset.mode = 'island';
       updateHint();
