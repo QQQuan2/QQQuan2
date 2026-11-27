@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import { createWorld } from './world.js';
 import { buildIsland, surfaceHeight } from './island.js';
 import { buildHouse } from './house.js';
+import { HOUSE } from './house-config.js';
 import { buildStructures } from './structures.js';
 import { createGroundDetails, createEdgeDetails } from './nature.js';
 import { createAtmosphere } from './atmosphere.js';
@@ -25,7 +26,10 @@ const $ = (id) => document.getElementById(id);
 const TOOL_LABEL = { tree: 'Tree', flower: 'Flowers', rock: 'Rock', lantern: 'Lantern', erase: 'Remove' };
 
 const ISLAND_LIMITS = { min: 13, max: 46, minP: 0.3, maxP: 1.46 };
-const INTERIOR_LIMITS = { min: 0.85, max: 3.6, minP: 0.5, maxP: 1.52 };
+// M1.4: max tightened 3.6 → 3.2; on top of this, world.setCamBounds
+// clamps the camera inside the interior shell so it can never exit
+// through a wall (that used to black out the whole screen).
+const INTERIOR_LIMITS = { min: 0.85, max: 3.2, minP: 0.5, maxP: 1.52 };
 const SAIL_LIMITS = { min: 2, max: 60, minP: 0.1, maxP: 1.52 };
 
 const POSTCARDS = [
@@ -68,8 +72,8 @@ function boot() {
 
   const house = buildHouse();
   house.group.position.set(0, surfaceHeight(0, -1.4), -1.4);
-  house.group.rotation.y = 0.42;
-  house.group.scale.setScalar(0.9); // V2: slightly smaller cottage, less dominating
+  house.group.rotation.y = HOUSE.placement.rotY;   // M1.1: from house-config
+  house.group.scale.setScalar(HOUSE.placement.scale); // slightly smaller cottage
   world.scene.add(house.group);
 
   const structures = buildStructures();
@@ -181,6 +185,7 @@ function boot() {
     travel(() => {
       world.setScene(interior.scene);
       world.setLimits(INTERIOR_LIMITS.min, INTERIOR_LIMITS.max, INTERIOR_LIMITS.minP, INTERIOR_LIMITS.maxP);
+      world.setCamBounds(interior.CAM_BOUNDS.min, interior.CAM_BOUNDS.max);
       world.controls.target.copy(interior.TARGET);
       world.camera.position.copy(interior.CAM_POS).add(new THREE.Vector3(0.25, 0.25, -0.9));
       interior.setNightTarget(atmosphere.nightLevel());
@@ -196,6 +201,7 @@ function boot() {
     travel(() => {
       world.setScene(world.scene);
       world.setLimits(ISLAND_LIMITS.min, ISLAND_LIMITS.max, ISLAND_LIMITS.minP, ISLAND_LIMITS.maxP);
+      world.setCamBounds(null);
       mode = 'island';
       document.body.dataset.mode = 'island';
       updateHint();

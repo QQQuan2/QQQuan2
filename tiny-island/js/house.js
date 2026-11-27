@@ -3,6 +3,7 @@ import {
   standard, emissive, mesh, mat, geo, box, shade, TriBuilder,
   rockGeometry, blobGeometry, makeRng,
 } from './utils.js';
+import { HOUSE } from './house-config.js';
 
 /* ------------------------------------------------------------------ *
  * The cottage — the visual anchor of the island.
@@ -16,18 +17,34 @@ const TIMBER_L = '#7b5137';
 const ROOF_SOLID = '#d2662c';
 const STONE = '#9d8e79';
 
-function archShape(w, h) {
+function archShape(w, h, cx = 0, cy = 0) {
   const hw = w / 2;
   const s = new THREE.Shape();
-  s.moveTo(-hw, 0);
-  s.lineTo(-hw, h - hw);
-  s.absarc(0, h - hw, hw, Math.PI, 0, true);
-  s.lineTo(hw, 0);
+  s.moveTo(cx - hw, cy);
+  s.lineTo(cx - hw, cy + h - hw);
+  s.absarc(cx, cy + h - hw, hw, Math.PI, 0, true);
+  s.lineTo(cx + hw, cy);
   s.closePath();
   return s;
 }
 
-function buildRoofGeometry(halfW, halfD, H, ridgeH, rng) {
+/**
+ * Extruded wall panel with true openings (M1.2). The shape lives in the
+ * local XY plane (y = 0 at the wall base) and is extruded along +z by
+ * `t`. Callers rotate/position it onto the four facades.
+ */
+function wallPanel(w, h, t, holes = []) {
+  const s = new THREE.Shape();
+  s.moveTo(-w / 2, 0);
+  s.lineTo(-w / 2, h);
+  s.lineTo(w / 2, h);
+  s.lineTo(w / 2, 0);
+  s.closePath();
+  for (const hn of holes) s.holes.push(hn);
+  return new THREE.ExtrudeGeometry(s, { depth: t, bevelEnabled: false, curveSegments: 16 });
+}
+
+function buildRoofGeometry(halfW, halfD, gableHalfD, H, ridgeH, rng) {
   const tb = new TriBuilder();
   const NX = 10, NZ = 14;
   const A = new THREE.Color('#d9692c');
@@ -51,8 +68,9 @@ function buildRoofGeometry(halfW, halfD, H, ridgeH, rng) {
       }
     }
   }
-  // gable ends, filled with warm plaster
-  for (const z of [-halfD, halfD]) {
+  // gable ends, filled with warm plaster — flush with the wall planes
+  // (M1.3: they used to float at ±halfD, 0.36 in front of the walls)
+  for (const z of [-gableHalfD, gableHalfD]) {
     for (let i = 0; i < NX * 2; i++) {
       const xa = -halfW + (2 * halfW * i) / (NX * 2);
       const xb = -halfW + (2 * halfW * (i + 1)) / (NX * 2);
@@ -72,10 +90,11 @@ export function buildHouse() {
   const g = new THREE.Group();
   g.name = 'house';
 
-  const W = 4.2, D = 3.4, H = 2.7;
+  const W = HOUSE.exterior.W, D = HOUSE.exterior.D, H = HOUSE.exterior.H;
+  const T = HOUSE.exterior.wallT;
   const halfW = (W + 0.72) / 2;
   const halfD = (D + 0.72) / 2;
-  const ridgeH = 2.15;
+  const ridgeH = HOUSE.exterior.ridgeH;
 
   const wallMat = mat('h-wall', () => standard(WALL));
   const timberMat = mat('h-timber', () => standard(TIMBER));
@@ -90,9 +109,24 @@ export function buildHouse() {
   g.add(mesh(box(W + 0.34, 0.38, D + 0.34), stoneMat, { pos: [0, -0.17, 0] }));
   g.add(mesh(box(W + 0.14, 0.12, D + 0.14), timberLMat, { pos: [0, 0.05, 0] }));
 
-  /* main walls */
-  const walls = mesh(box(W, H, D), wallMat, { pos: [0, H / 2 + 0.06, 0] });
-  g.add(walls);
+  /* main walls — a real shell with true door / window openings (M1.2).
+     Each wall is an extruded panel whose openings are shape holes, so
+     doors and windows sit in genuine recesses instead of decals on a
+     solid box. Hole outlines exactly match the frame shapes below. */
+  const baseY = HOUSE.exterior.baseY;
+  const doorHole = archShape(1.22, 2.0, -0.55, 0.002);    // = doorFrame outline
+  const frontWinHole = archShape(1.08, 1.37, 1.15, 0.96); // = front window frame
+  const sideWinHoleR = archShape(0.94, 1.21, 0.15, 0.99); // right wall (shape x = world z)
+  const sideWinHoleL = archShape(0.94, 1.21, 0.2, 0.99);  // left wall  (shape x = -world z)
+
+  g.add(mesh(wallPanel(W, H, T, [doorHole, frontWinHole]), wallMat,
+    { pos: [0, baseY, D / 2 - T] }));                                             // front
+  g.add(mesh(wallPanel(W, H, T), wallMat,
+    { pos: [0, baseY, -D / 2], rot: [0, Math.PI, 0] }));                          // back
+  g.add(mesh(wallPanel(D, H, T, [sideWinHoleL]), wallMat,
+    { pos: [-W / 2, baseY, 0], rot: [0, Math.PI / 2, 0] }));                      // left
+  g.add(mesh(wallPanel(D, H, T, [sideWinHoleR]), wallMat,
+    { pos: [W / 2, baseY, 0], rot: [0, -Math.PI / 2, 0] }));                      // right
 
   /* half-timber framing */
   const frontZ = D / 2 + 0.055;
@@ -104,46 +138,68 @@ export function buildHouse() {
   };
   beam(W + 0.06, 0.17, 0.13, 0, H - 0.04, frontZ);
   beam(W + 0.06, 0.15, 0.13, 0, 0.2, frontZ);
-  beam(W + 0.06, 0.11, 0.12, 0, 1.42, frontZ);
+  // M1.2: the y=1.42 rail used to run straight through the door and the
+  // arched window — it is now split into segments beside the openings
+  // (door x -1.16..0.06, window x 0.61..1.69)
+  beam(0.97, 0.11, 0.12, -1.645, 1.42, frontZ);
+  beam(0.55, 0.11, 0.12, 0.335, 1.42, frontZ);
+  beam(0.44, 0.11, 0.12, 1.915, 1.42, frontZ);
   beam(0.16, H, 0.14, -W / 2 + 0.02, H / 2 + 0.06, frontZ);
   beam(0.16, H, 0.14, W / 2 - 0.02, H / 2 + 0.06, frontZ);
-  beam(0.12, 0.85, 0.12, -1.72, 0.78, frontZ + 0.02, 0.62);
-  beam(0.12, 0.85, 0.12, 1.72, 0.78, frontZ + 0.02, -0.62);
-  beam(0.12, 0.85, 0.12, -1.72, 1.98, frontZ + 0.02, -0.62);
-  beam(0.12, 0.85, 0.12, 1.72, 1.98, frontZ + 0.02, 0.62);
+  // M1.2: corner braces shortened and pushed out to x ±1.9 so they no
+  // longer press on the front window frame (which reaches x ±1.69)
+  beam(0.12, 0.6, 0.12, -1.9, 0.75, frontZ + 0.02, 0.5);
+  beam(0.12, 0.6, 0.12, 1.9, 0.75, frontZ + 0.02, -0.5);
+  beam(0.12, 0.6, 0.12, -1.9, 1.95, frontZ + 0.02, -0.5);
+  beam(0.12, 0.6, 0.12, 1.9, 1.95, frontZ + 0.02, 0.5);
 
-  // side framing
+  // side framing — the y=1.42 rail is split around each side window
   for (const sx of [-1, 1]) {
     const x = sx * (W / 2 + 0.055);
     const b1 = mesh(box(0.13, 0.16, D + 0.06), timberMat, { pos: [x, H - 0.04, 0] });
     const b2 = mesh(box(0.13, 0.14, D + 0.06), timberMat, { pos: [x, 0.2, 0] });
-    const b3 = mesh(box(0.12, 0.11, D + 0.06), timberMat, { pos: [x, 1.42, 0] });
+    g.add(b1, b2);
+    const gap = sx === 1 ? [-0.32, 0.62] : [-0.67, 0.27]; // side window z range
+    const rails = [
+      [-D / 2 - 0.03, gap[0]],
+      [gap[1], D / 2 + 0.03],
+    ];
+    for (const [z0, z1] of rails) {
+      if (z1 - z0 > 0.05) {
+        g.add(mesh(box(0.12, 0.11, z1 - z0), timberMat, { pos: [x, 1.42, (z0 + z1) / 2] }));
+      }
+    }
     const c1 = mesh(box(0.14, H, 0.16), timberMat, { pos: [x, H / 2 + 0.06, -D / 2 + 0.02] });
     const c2 = mesh(box(0.14, H, 0.16), timberMat, { pos: [x, H / 2 + 0.06, D / 2 - 0.02] });
-    g.add(b1, b2, b3, c1, c2);
+    g.add(c1, c2);
   }
 
-  /* curved tiled roof */
+  /* curved tiled roof — everything roof-related lives in one group so
+     the future Dollhouse view can hide / ghost the roof as a unit
+     without touching walls, windows or furniture (M1.6) */
+  const roofGroup = new THREE.Group();
+  roofGroup.name = 'roof';
   const roof = mesh(
-    buildRoofGeometry(halfW, halfD, H + 0.06, ridgeH, rng),
+    buildRoofGeometry(halfW, halfD, D / 2, H + 0.06, ridgeH, rng),
     standard('#ffffff', { vertexColors: true, roughness: 0.82, side: THREE.DoubleSide })
   );
-  g.add(roof);
+  roofGroup.add(roof);
   // eaves + ridge caps
   for (const s of [-1, 1]) {
-    g.add(mesh(box(0.18, 0.15, 2 * halfD + 0.06), roofDark, {
+    roofGroup.add(mesh(box(0.18, 0.15, 2 * halfD + 0.06), roofDark, {
       pos: [s * halfW, H + 0.06 + 0.2, 0],
     }));
   }
-  g.add(mesh(box(0.24, 0.18, 2 * halfD + 0.16), roofDark, {
+  roofGroup.add(mesh(box(0.24, 0.18, 2 * halfD + 0.16), roofDark, {
     pos: [0, H + 0.06 + ridgeH + 0.02, 0],
   }));
   // little ridge finials
   for (const s of [-1, 1]) {
-    g.add(mesh(geo('finial', () => new THREE.ConeGeometry(0.14, 0.34, 5)), timberLMat, {
+    roofGroup.add(mesh(geo('finial', () => new THREE.ConeGeometry(0.14, 0.34, 5)), timberLMat, {
       pos: [0, H + ridgeH + 0.24, s * (halfD + 0.02)],
     }));
   }
+  g.add(roofGroup);
 
   /* arched window helper */
   function windowUnit(w, h, withBox = false) {
@@ -176,8 +232,8 @@ export function buildHouse() {
     return u;
   }
 
-  /* front door + big window */
-  const doorZ = D / 2 + 0.075;
+  /* front door + big window — recessed into the wall opening (M1.2) */
+  const doorZ = D / 2 - 0.08;
   const doorFrame = new THREE.Mesh(new THREE.ShapeGeometry(archShape(1.22, 2.0), 16), timberMat);
   doorFrame.position.set(-0.55, 0.06, doorZ);
   g.add(doorFrame);
@@ -197,7 +253,7 @@ export function buildHouse() {
   g.add(mesh(box(1.8, 0.13, 0.42), stoneMat, { pos: [-0.55, -0.09, D / 2 + 0.62] }));
 
   const frontWin = windowUnit(0.92, 1.24, true);
-  frontWin.position.set(1.15, 1.02, D / 2 + 0.07);
+  frontWin.position.set(1.15, 1.02, D / 2 - 0.08); // sits inside the wall reveal
   g.add(frontWin);
 
   /* porch canopy above the door */
@@ -215,20 +271,21 @@ export function buildHouse() {
     }));
   }
 
-  /* round window in the front gable */
-  const gableZ = halfD + 0.012;
+  /* round window in the front gable — part of the roof group (M1.6),
+     flush against the gable wall plane at z = D/2 (M1.3) */
+  const gableZ = D / 2 + 0.012;
   const ringGeo = geo('gableRing', () => new THREE.TorusGeometry(0.34, 0.075, 6, 18));
-  g.add(mesh(ringGeo, timberMat, { pos: [0, H + 0.95, gableZ] }));
-  g.add(mesh(geo('gableGlass', () => new THREE.CircleGeometry(0.31, 20)), glassMat, {
+  roofGroup.add(mesh(ringGeo, timberMat, { pos: [0, H + 0.95, gableZ] }));
+  roofGroup.add(mesh(geo('gableGlass', () => new THREE.CircleGeometry(0.31, 20)), glassMat, {
     pos: [0, H + 0.95, gableZ + 0.01], cast: false,
   }));
-  g.add(mesh(box(0.05, 0.6, 0.05), timberMat, { pos: [0, H + 0.95, gableZ + 0.03] }));
-  g.add(mesh(box(0.6, 0.05, 0.05), timberMat, { pos: [0, H + 0.95, gableZ + 0.03] }));
+  roofGroup.add(mesh(box(0.05, 0.6, 0.05), timberMat, { pos: [0, H + 0.95, gableZ + 0.03] }));
+  roofGroup.add(mesh(box(0.6, 0.05, 0.05), timberMat, { pos: [0, H + 0.95, gableZ + 0.03] }));
 
-  /* side windows */
+  /* side windows — recessed into the side wall reveals (M1.2) */
   for (const sx of [-1, 1]) {
     const w = windowUnit(0.78, 1.08, sx === 1);
-    w.position.set(sx * (W / 2 + 0.075), 1.05, sx === 1 ? 0.15 : -0.2);
+    w.position.set(sx * (W / 2 - 0.08), 1.05, sx === 1 ? 0.15 : -0.2);
     w.rotation.y = sx * Math.PI / 2;
     g.add(w);
   }
@@ -249,7 +306,7 @@ export function buildHouse() {
   dwf.position.set(0, 0.25, 0.315);
   dormer.add(dwf);
   dormer.position.set(1.28, H + 0.55, halfD * 0.42);
-  g.add(dormer);
+  roofGroup.add(dormer); // roof structure → hides with the roof (M1.6)
 
   /* stone chimney + smoke */
   const chim = new THREE.Group();
@@ -307,8 +364,45 @@ export function buildHouse() {
 
   g.userData.interactive = 'home';
 
+  /* ---------------- roof display modes (M1.6) ---------------------- *
+   * Foundation for the M3 Full House / Dollhouse view. The UI arrives
+   * in M3 — this only guarantees the building components support the
+   * three states safely:
+   *   'full'   → roof visible, original materials (default)
+   *   'hidden' → roof group invisible
+   *   'ghost'  → every roof mesh swapped to ONE shared translucent
+   *              material, restored mesh-by-mesh afterwards.
+   * Materials are swapped per-mesh and never mutated, so shared
+   * materials (roofSolid / roofDark / wallMat / glassMat also used by
+   * the porch canopy, windows etc.) can never be corrupted. */
+  const ghostMat = new THREE.MeshStandardMaterial({
+    color: '#d2662c', transparent: true, opacity: 0.16,
+    roughness: 0.8, depthWrite: false, side: THREE.DoubleSide,
+  });
+  const roofMeshes = [];
+  roofGroup.traverse((o) => { if (o.isMesh) roofMeshes.push(o); });
+  let roofMode = 'full';
+  function setRoofMode(mode) {
+    if (!['full', 'hidden', 'ghost'].includes(mode)) return roofMode;
+    if (roofMode === 'ghost') {
+      for (const m of roofMeshes) m.material = m.userData.roofMat;
+    }
+    roofMode = mode;
+    roofGroup.visible = mode !== 'hidden';
+    if (mode === 'ghost') {
+      for (const m of roofMeshes) {
+        if (!m.userData.roofMat) m.userData.roofMat = m.material;
+        m.material = ghostMat;
+      }
+    }
+    return roofMode;
+  }
+
   return {
     group: g,
+    roofGroup,
+    setRoofMode,
+    get roofDisplayMode() { return roofMode; },
     windowGlow: glassMat,
     lampGlow: lampMat,
     doorLight,

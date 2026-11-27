@@ -78,29 +78,33 @@ export function buildInterior() {
     }
   }
 
-  // walls (front wall carries the window, left wall carries the door)
+  // walls (M1.2: the front wall now carries both the door and the
+  // window, matching the cottage's front facade; the left wall used to
+  // have a door cut-out that left a ~0.97-wide hole — it is solid again)
   scene.add(mesh(box(6.4, 2.8, 0.16), wallMat, { pos: [0, 1.4, -2.78] }));
   scene.add(mesh(box(0.16, 2.8, 5.4), wallMat, { pos: [3.28, 1.4, 0] }));
-  // left wall around the door opening (z 0.30..1.36, h 2.1)
-  scene.add(mesh(box(0.16, 2.8, 2.03), wallMat, { pos: [-3.28, 1.4, -1.685] }));
-  scene.add(mesh(box(0.16, 2.8, 1.34), wallMat, { pos: [-3.28, 1.4, 2.03] }));
-  scene.add(mesh(box(0.16, 0.7, 1.06), wallMat, { pos: [-3.28, 2.45, 0.83] }));
-  // front wall around the window opening (x -1.15..1.05, y 0.85..2.2)
-  scene.add(mesh(box(2.05, 2.8, 0.16), wallMat, { pos: [-2.175, 1.4, 2.78] }));
+  scene.add(mesh(box(0.16, 2.8, 5.4), wallMat, { pos: [-3.28, 1.4, 0] }));
+  // front wall around the door opening (x -2.9..-1.9, h 2.1)…
+  scene.add(mesh(box(0.3, 2.8, 0.16), wallMat, { pos: [-3.05, 1.4, 2.78] }));
+  scene.add(mesh(box(1.0, 0.7, 0.16), wallMat, { pos: [-2.4, 2.45, 2.78] }));
+  scene.add(mesh(box(0.75, 2.8, 0.16), wallMat, { pos: [-1.525, 1.4, 2.78] }));
+  // …and the window opening (x -1.15..1.05, y 0.85..2.2)
   scene.add(mesh(box(2.15, 2.8, 0.16), wallMat, { pos: [2.125, 1.4, 2.78] }));
   scene.add(mesh(box(2.2, 0.85, 0.16), wallMat, { pos: [-0.05, 0.425, 2.78] }));
   scene.add(mesh(box(2.2, 0.6, 0.16), wallMat, { pos: [-0.05, 2.5, 2.78] }));
-  // ceiling + beams
-  scene.add(mesh(box(6.4, 0.12, 5.4), mat('i-ceil', () => standard('#e6d3b2')), { pos: [0, 2.86, 0], cast: false }));
+  // ceiling + beams (M1.5: nudged 0.01 up so the ceiling bottom no
+  // longer sits exactly coplanar with the wall tops at y=2.8 — that
+  // seam was a Z-fighting flicker candidate)
+  scene.add(mesh(box(6.4, 0.12, 5.4), mat('i-ceil', () => standard('#e6d3b2')), { pos: [0, 2.87, 0], cast: false }));
   for (const z of [-0.9, 0.9]) {
     scene.add(mesh(box(6.4, 0.14, 0.22), timberMat, { pos: [0, 2.72, z] }));
   }
-  // wainscot strips
+  // wainscot strips (follow the new wall segmentation)
   scene.add(mesh(box(6.4, 0.42, 0.05), timberMid, { pos: [0, 0.28, -2.67], cast: false }));
   scene.add(mesh(box(0.05, 0.42, 5.4), timberMid, { pos: [3.2, 0.28, 0], cast: false }));
-  scene.add(mesh(box(0.05, 0.42, 2.0), timberMid, { pos: [-3.2, 0.28, -1.68], cast: false }));
-  scene.add(mesh(box(0.05, 0.42, 1.3), timberMid, { pos: [-3.2, 0.28, 2.03], cast: false }));
-  scene.add(mesh(box(2.0, 0.42, 0.05), timberMid, { pos: [-2.17, 0.28, 2.67], cast: false }));
+  scene.add(mesh(box(0.05, 0.42, 5.4), timberMid, { pos: [-3.2, 0.28, 0], cast: false }));
+  scene.add(mesh(box(0.22, 0.42, 0.05), timberMid, { pos: [-3.03, 0.28, 2.67], cast: false }));
+  scene.add(mesh(box(0.7, 0.42, 0.05), timberMid, { pos: [-1.55, 0.28, 2.67], cast: false }));
   scene.add(mesh(box(2.1, 0.42, 0.05), timberMid, { pos: [2.12, 0.28, 2.67], cast: false }));
 
   /* ---------------------- window + sea view ----------------------- */
@@ -123,11 +127,12 @@ export function buildInterior() {
   windowGroup.userData.interactive = 'window';
   scene.add(windowGroup);
 
-  // curtains
+  // curtains (left panel nudged onto the wall strip beside the window,
+  // clear of the new door opening at x -2.9..-1.9)
   const curtainMat = mat('i-curtain', () => standard('#d9a05e'));
-  scene.add(mesh(box(0.34, 1.55, 0.12), curtainMat, { pos: [-1.45, 1.42, 2.6] }));
+  scene.add(mesh(box(0.34, 1.55, 0.12), curtainMat, { pos: [-1.36, 1.42, 2.6] }));
   scene.add(mesh(box(0.34, 1.55, 0.12), curtainMat, { pos: [1.35, 1.42, 2.6] }));
-  scene.add(mesh(box(2.9, 0.16, 0.14), curtainMat, { pos: [-0.05, 2.36, 2.62] }));
+  scene.add(mesh(box(3.1, 0.16, 0.14), curtainMat, { pos: [-0.15, 2.36, 2.62] }));
 
   // sea backdrop outside the window
   const backdropUniforms = {
@@ -330,20 +335,22 @@ export function buildInterior() {
   scene.add(chair);
 
   /* --------------------------- door ------------------------------- */
+  // M1.2: the door moved from the left wall (where it was rotated
+  // -0.55 rad against its own opening) to the front wall opening at
+  // x -2.9..-1.9, flush with the wall like the cottage's front door.
+  // Local frame: opening 1.0 wide along x, panel faces the room (-z).
   const doorGroup = new THREE.Group();
   doorGroup.name = 'door';
-  // frame
-  doorGroup.add(mesh(box(0.1, 2.15, 0.1), timberMat, { pos: [0, 1.075, -0.05] }));
-  doorGroup.add(mesh(box(0.1, 2.15, 0.1), timberMat, { pos: [0, 1.075, 1.05] }));
-  doorGroup.add(mesh(box(0.1, 0.1, 1.2), timberMat, { pos: [0, 2.12, 0.5] }));
-  const panel = mesh(box(0.07, 2.0, 0.95), mat('i-door', () => standard('#6d4a30')), {
-    pos: [0, 1.0, 0.485],
+  doorGroup.add(mesh(box(0.1, 2.15, 0.1), timberMat, { pos: [-0.45, 1.075, 0] }));
+  doorGroup.add(mesh(box(0.1, 2.15, 0.1), timberMat, { pos: [0.45, 1.075, 0] }));
+  doorGroup.add(mesh(box(1.1, 0.1, 0.1), timberMat, { pos: [0, 2.12, 0] }));
+  const panel = mesh(box(0.95, 2.0, 0.07), mat('i-door', () => standard('#6d4a30')), {
+    pos: [0, 1.0, 0],
   });
   doorGroup.add(panel);
   doorGroup.add(mesh(geo('i-knob', () => new THREE.IcosahedronGeometry(0.05, 0)),
-    brassMat, { pos: [-0.07, 1.0, 0.86] }));
-  doorGroup.position.set(-3.12, 0, 0.36);
-  doorGroup.rotation.y = -0.55;
+    brassMat, { pos: [-0.35, 1.0, -0.06] }));
+  doorGroup.position.set(-2.4, 0, 2.78);
   doorGroup.userData.interactive = 'door';
   scene.add(doorGroup);
 
@@ -467,6 +474,14 @@ export function buildInterior() {
     setNightTarget: (v) => { nightTarget = v; },
     CAM_POS: new THREE.Vector3(0.55, 1.55, -1.05),
     TARGET: new THREE.Vector3(-0.35, 1.02, 0.85),
+    // M1.4: hard interior bounds for the camera (world.setCamBounds).
+    // 0.18 margin inside the shell so normal orbiting can never push
+    // the camera through a wall or the ceiling (the old maxDistance
+    // alone allowed exactly that, blacking out the screen).
+    CAM_BOUNDS: {
+      min: new THREE.Vector3(-3.02, 0.3, -2.52),
+      max: new THREE.Vector3(3.02, 2.72, 2.52),
+    },
     BOOK_FOCUS, WINDOW_FOCUS,
   };
 }

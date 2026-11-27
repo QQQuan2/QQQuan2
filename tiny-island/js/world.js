@@ -267,7 +267,20 @@ export function createWorld(canvas) {
     controls.update();
   }
 
+  /* M1.4: optional hard AABB for the camera (used indoors). OrbitControls
+     only limits the orbit *distance around the target* — with an
+     off-centre target that still lets the camera pass through walls.
+     Clamping in render() (which runs right after controls.update())
+     guarantees the camera stays inside the shell. Lightweight on
+     purpose: it restricts the view to a box, it is not a collision
+     system, and it never blocks zooming altogether. */
+  let camBounds = null;
+  function setCamBounds(min, max) {
+    camBounds = min && max ? { min, max } : null;
+  }
+
   function render() {
+    if (camBounds) camera.position.clamp(camBounds.min, camBounds.max);
     renderer.render(activeScene, camera);
   }
 
@@ -297,7 +310,7 @@ export function createWorld(canvas) {
     skyUniforms, oceanUniforms, cloudMat, starMat,
     sky, ocean, clouds, stars,
     CAM_POS, TARGET,
-    setScene, getScene, setLimits, render,
+    setScene, getScene, setLimits, setCamBounds, render,
     resize, update,
   };
 }
