@@ -1,4 +1,4 @@
-import { readJSON, writeJSON } from './utils.js';
+import { readJSON, writeJSON } from './utils.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * Life Journal — the indoor notebook on the desk. A personal life

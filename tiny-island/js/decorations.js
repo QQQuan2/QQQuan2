@@ -1,8 +1,8 @@
 import * as THREE from 'three';
-import { createDecoration } from './nature.js';
-import { edgeRadius, surfaceHeight } from './island.js';
-import { RESERVED } from './growth.js';
-import { readJSON, writeJSON, TAU } from './utils.js';
+import { createDecoration } from './nature.js?v=20261127a';
+import { edgeRadius, surfaceHeight } from './island.js?v=20261127a';
+import { RESERVED } from './growth.js?v=20261127a';
+import { readJSON, writeJSON, TAU } from './utils.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * "Make It Yours" — placement with a live ghost preview, validity

@@ -2,9 +2,9 @@ import * as THREE from 'three';
 import {
   standard, emissive, mesh, mat, geo, box, TAU, makeRng,
   blobGeometry, glowTexture, TriBuilder, shade,
-} from './utils.js';
-import { surfaceHeight, edgeRadius } from './island.js';
-import { createTree, createFlowerCluster, createRock, createLantern } from './nature.js';
+} from './utils.js?v=20261127a';
+import { surfaceHeight, edgeRadius } from './island.js?v=20261127a';
+import { createTree, createFlowerCluster, createRock, createLantern } from './nature.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * The little world: winding path, pond, dock, sailboat, garden,

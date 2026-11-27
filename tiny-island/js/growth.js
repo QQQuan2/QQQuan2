@@ -2,10 +2,10 @@ import * as THREE from 'three';
 import {
   ISLAND_R, SEG, TAU, damp, makeRng, shade, faceNormal,
   readJSON, writeJSON, standard, glowTexture,
-} from './utils.js';
+} from './utils.js?v=20261127a';
 import {
   edgeRadius, topHeight, layerRadius, GRASS, LAYERS,
-} from './island.js';
+} from './island.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * Island Growth System 1.1 — Milestone A

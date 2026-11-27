@@ -1,19 +1,19 @@
 import * as THREE from 'three';
-import { createWorld } from './world.js';
-import { buildIsland, surfaceHeight } from './island.js';
-import { buildHouse } from './house.js';
-import { HOUSE } from './house-config.js';
-import { buildStructures } from './structures.js';
-import { createGroundDetails, createEdgeDetails } from './nature.js';
-import { createAtmosphere } from './atmosphere.js';
-import { createDecorationSystem } from './decorations.js';
-import { createGrowthSystem } from './growth.js';
-import { createDiary } from './diary.js';
-import { buildInterior } from './interior.js';
+import { createWorld } from './world.js?v=20261127a';
+import { buildIsland, surfaceHeight } from './island.js?v=20261127a';
+import { buildHouse } from './house.js?v=20261127a';
+import { HOUSE } from './house-config.js?v=20261127a';
+import { buildStructures } from './structures.js?v=20261127a';
+import { createGroundDetails, createEdgeDetails } from './nature.js?v=20261127a';
+import { createAtmosphere } from './atmosphere.js?v=20261127a';
+import { createDecorationSystem } from './decorations.js?v=20261127a';
+import { createGrowthSystem } from './growth.js?v=20261127a';
+import { createDiary } from './diary.js?v=20261127a';
+import { buildInterior } from './interior.js?v=20261127a';
 import {
   initProfiles, listProfiles, switchProfile, createProfile, deleteProfile,
-} from './profile.js';
-import { createJournal } from './journal.js';
+} from './profile.js?v=20261127a';
+import { createJournal } from './journal.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * Tiny Island — application entry point.

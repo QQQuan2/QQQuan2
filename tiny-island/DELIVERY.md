@@ -819,9 +819,39 @@ tiny-island/
 
 1. 窗外是**平面贴图**而非视差正确的透视门户：转动室内相机时窗外不产生视差，但岛景本身（海浪、云、星星、昼夜、成长地形）逐帧实时。
 2. 室内渲染时岛景多渲染一遍（1024×632 RT），低端设备若卡顿可降 RT 分辨率或降帧。
-3. `?v=` 模块版本化未做（需整套 ESM 子模块带 query 才有效），仍按 `close`+`open` 绕缓存。
+3. ~~`?v=` 模块版本化未做，仍按 `close`+`open` 绕缓存。~~ → 已于 M2r1 完成，见 §19（整套 ESM 模块带 `?v=` query）。
 4. 两 Scene 硬切换架构保留；室内外绝对对齐/合并仍是后续里程碑，不在本轮范围。
 5. 老虎窗/烟囱嵌入主屋面未开洞、雨棚与灯笼立面叠压（M0 P1）仍待后续处理。
+
+---
+
+## 19. M2r1 — 整套 ESM 模块 `?v=` 版本化（缓存根治）
+
+### 19.1 背景与目标
+
+`http.server`（以及部分静态托管）不带 `Cache-Control`，浏览器会对 ESM 模块做启发式缓存，导致改完代码后用户浏览器长期跑**旧的模块图**——这是历次"功能没生效 / fade 卡死"假象的头号来源（见 `DIAGNOSIS-tiny-island.md`）。此前一直靠 `close`+`open` 或 `Ctrl+Shift+R` 硬刷新绕开。
+
+关键点：**只给入口 `main.js` 加 query 无效**，因为 `main.js` 里 `import './world.js'` 等仍是裸路径，会被各自缓存；必须让**整套 ESM 子模块图**都带同一个版本号。
+
+### 19.2 改动
+
+| 范围 | 内容 |
+| --- | --- |
+| `index.html` | 入口 `<script type="module" src="./js/main.js?v=20261127a">` |
+| 12 个 `js/*.js` | 所有相对 `import ... from './xxx.js'` 与 `../vendor/OrbitControls.js` 统一追加 `?v=20261127a`（含多行 import 的结尾 `} from '...'`） |
+| `vendor/three.module.js` | **不加**（由 importmap 映射到固定 vendored 引擎，r160 不变，课堂要求离线可跑） |
+
+版本号统一为 `20261127a`。**发版约定**：以后每次发布，只需全仓把 `v=20261127a` 整体替换成新值，浏览器即会重新拉取整套模块图，不再依赖硬刷新。
+
+### 19.3 实机验收（Chromium / localhost:8123）
+
+- `performance.getEntriesByType('resource')` 检查：首次加载与 `open` 重载**均 15/15 个 `/js/` 请求带 `?v=20261127a`**，`unversioned:[]`，`__bootError` 为空、`world.outsideRT` 就位。
+- 全链路回归：合成点击进屋 → `data-mode=interior`、相机切到室内机位 → 截图 `preview/m2r1-versioned-interior.png`（窗外实时岛景、Japandi 家具完好）→ `Leave home` → `data-mode=island`、`house.group`/`mailbox` 可见性还原、`fade` opacity 归零、零启动错误。
+- 静态零告警（`read_lints`）。
+
+### 19.4 边界说明
+
+入口 HTML 本身若被强缓存，用户仍可能需要一次普通刷新才能拿到新的 query 串（GitHub Pages 等正规静态托管带正确缓存头时无此问题）；但**子模块图已彻底摆脱启发式缓存**。此前的 `close`+`open` 验证法仍可作为兜底继续沿用。
 
 
 

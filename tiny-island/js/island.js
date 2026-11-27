@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import {
   ISLAND_R, SEG, TAU, TriBuilder, standard, shade, faceNormal,
   makeRng, rockGeometry, mat, mesh,
-} from './utils.js';
+} from './utils.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * Island body

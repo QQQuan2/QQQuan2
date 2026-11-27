@@ -2,8 +2,8 @@ import * as THREE from 'three';
 import {
   standard, emissive, mesh, mat, geo, box, shade, TriBuilder,
   rockGeometry, blobGeometry, makeRng,
-} from './utils.js';
-import { HOUSE } from './house-config.js';
+} from './utils.js?v=20261127a';
+import { HOUSE } from './house-config.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * The cottage — the visual anchor of the island.

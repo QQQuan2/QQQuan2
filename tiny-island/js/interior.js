@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import {
   standard, emissive, mesh, mat, geo, box, makeRng, damp, blobGeometry,
-} from './utils.js';
+} from './utils.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * Home Interior — a separate cozy Three.js scene the camera visits

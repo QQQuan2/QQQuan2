@@ -1,8 +1,8 @@
 import * as THREE from 'three';
 import {
   readJSON, writeJSON, geo, mesh, emissive, glowTexture, TAU,
-} from './utils.js';
-import { surfaceHeight } from './island.js';
+} from './utils.js?v=20261127a';
+import { surfaceHeight } from './island.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * "Leave a Memory" — a real journal backed by localStorage.

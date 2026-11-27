@@ -1,8 +1,8 @@
 import * as THREE from 'three';
-import { OrbitControls } from '../vendor/OrbitControls.js';
+import { OrbitControls } from '../vendor/OrbitControls.js?v=20261127a';
 import {
   SEA_Y, TAU, makeRng, glowTexture, blobGeometry, mesh, standard,
-} from './utils.js';
+} from './utils.js?v=20261127a';
 
 /* ------------------------------------------------------------------ *
  * Renderer, camera, lighting, gradient sky, animated ocean, clouds
