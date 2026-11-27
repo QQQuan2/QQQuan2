@@ -120,40 +120,26 @@ A hand-written Canvas scene framework powering 8 complete mini games (Snake, Tet
 </p>
 
 </td>
-<td width="33%" valign="top"></td>
+<td width="33%" valign="top">
+
+### 🏝️ [Tiny Island](https://qqquan2.github.io/QQQuan2/tiny-island/)
+
+*Three.js · WebGL · Vanilla JS · Procedural 3D · Zero build*
+
+A little 3D island you can tend: day / sunset / night atmospheres computed from the real sun, a memory journal that makes the island physically grow as you write, an interior scene and a mailboat that sails off with postcards. Every model is built in code — no 3D assets.
+
+<p>
+  <a href="https://qqquan2.github.io/QQQuan2/tiny-island/"><img src="https://img.shields.io/badge/🚀_Live_Demo-6A5ACD?style=for-the-badge" alt="Live Demo"/></a>
+  <a href="https://github.com/QQQuan2/QQQuan2/tree/main/tiny-island"><img src="https://img.shields.io/badge/📂_Source-20B2AA?style=for-the-badge" alt="Source"/></a>
+</p>
+
+</td>
 <td width="33%" valign="top"></td>
 </tr>
 </table>
 
 <!-- ==================== 监工中 / WORK IN PROGRESS ==================== -->
 ## 🚧 Work In Progress
-
-<div align="center">
-
-<sub>Hand-updated, not automated — this is what is genuinely sitting on my desk unfinished right now. Percentages are honest self-assessments, not CI reports. <code>Last touched: 2026-10</code></sub>
-
-</div>
-
-<!-- ==================== TIDAL GARDEN ISLAND ==================== -->
-<div align="center">
-
-<a href="https://qqquan2.github.io/QQQuan2/assets/island/tidal-garden.svg" target="_blank">
-  <img src="https://qqquan2.github.io/QQQuan2/assets/island/tidal-garden.svg" width="60%" alt="A floating tidal-garden island: sand isle with a tide pool, a pink octopus, corals, a starfish and a wooden sign, gently drifting over the sea." title="Tidal Garden — my little floating island"/>
-</a>
-
-<sub>🏝️ <b>Tidal Garden</b> — a island whose elements are interactive </sub>
-
-<br/>
-
-<sub><a href="https://qqquan2.github.io/QQQuan2/island/">▶ Open the interactive version</a> — hover anything, click the octopus, and the whole isle drifts while you look.</sub>
-
-<br/>
-
-<sub>💬 <b>Comment:</b> — 做得好丑。</sub>
-
-</div>
-
-<br/>
 
 <table align="center" width="100%">
 <tr>
