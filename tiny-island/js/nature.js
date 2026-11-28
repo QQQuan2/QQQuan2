@@ -2,8 +2,8 @@ import * as THREE from 'three';
 import {
   standard, emissive, mesh, mat, geo, box, TAU, makeRng,
   rockGeometry, blobGeometry, glowTexture,
-} from './utils.js?v=20261127a';
-import { surfaceHeight, edgeRadius } from './island.js?v=20261127a';
+} from './utils.js?v=20261128b';
+import { surfaceHeight, edgeRadius } from './island.js?v=20261128b';
 
 /* ------------------------------------------------------------------ *
  * Reusable nature props. Also used by the decoration tool, so every

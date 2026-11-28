@@ -2,8 +2,8 @@ import * as THREE from 'three';
 import {
   standard, emissive, mesh, mat, geo, box, shade, TriBuilder,
   rockGeometry, blobGeometry, makeRng,
-} from './utils.js?v=20261127a';
-import { HOUSE } from './house-config.js?v=20261127a';
+} from './utils.js?v=20261128b';
+import { HOUSE } from './house-config.js?v=20261128b';
 
 /* ------------------------------------------------------------------ *
  * The cottage — the visual anchor of the island.
@@ -256,18 +256,22 @@ export function buildHouse() {
   frontWin.position.set(1.15, 1.02, D / 2 - 0.08); // sits inside the wall reveal
   g.add(frontWin);
 
-  /* porch canopy above the door */
+  /* porch canopy — M3-B: the old V sat at y 2.12 with its inner tips
+     dipping to ~2.03, right across the door arch (top y 2.0), and at
+     the same height as the lantern. It is now raised above the door
+     head and shortened, so arch / canopy / lantern occupy three
+     separate bands; the posts reach from the step up to the planks. */
   const canopy = new THREE.Group();
   for (const s of [-1, 1]) {
-    const plank = mesh(box(0.95, 0.07, 1.15), roofSolid, { pos: [s * 0.38, 0.14, 0] });
+    const plank = mesh(box(0.95, 0.07, 0.78), roofSolid, { pos: [s * 0.38, 0.14, 0] });
     plank.rotation.z = -s * 0.5;
     canopy.add(plank);
   }
-  canopy.position.set(-0.55, 2.12, D / 2 + 0.42);
+  canopy.position.set(-0.55, 2.5, D / 2 + 0.3);
   g.add(canopy);
   for (const s of [-1, 1]) {
-    g.add(mesh(box(0.09, 1.0, 0.09), timberMat, {
-      pos: [-0.55 + s * 0.82, 1.62, D / 2 + 0.82],
+    g.add(mesh(box(0.09, 2.4, 0.09), timberMat, {
+      pos: [-0.55 + s * 0.72, 1.2, D / 2 + 0.6],
     }));
   }
 
@@ -290,7 +294,13 @@ export function buildHouse() {
     g.add(w);
   }
 
-  /* dormer on the front roof slope */
+  /* dormer — M3-A: the roof ridge runs along z, so the two slopes face
+     +/-x. The old dormer sat at x 1.28 with its window facing +z, i.e.
+     buried *inside* the roof volume (m0-04: only its little roof poked
+     through the curved surface). It now sits on the +x slope with the
+     window facing +x; its base is intentionally sunk ~0.8 below the
+     roof surface so it reads as emerging from the slope, not floating
+     in front of it. Roof y at x 1.41 ≈ 4.08 / at x 2.03 ≈ 3.40. */
   const dormer = new THREE.Group();
   dormer.add(mesh(box(0.9, 0.72, 0.62), wallMat, { pos: [0, 0.36, 0] }));
   for (const s of [-1, 1]) {
@@ -299,13 +309,16 @@ export function buildHouse() {
     dormer.add(slab);
   }
   dormer.add(mesh(box(0.12, 0.06, 0.9), roofDark, { pos: [0, 1.0, 0] }));
+  // M2 z-band rule: box front is at local z 0.31, so frame / glass sit
+  // at 0.33 / 0.35 (>= 0.02 clear) instead of the old 0.315 / 0.32.
   const dw = new THREE.Mesh(new THREE.ShapeGeometry(archShape(0.48, 0.6), 12), glassMat);
-  dw.position.set(0, 0.28, 0.32);
+  dw.position.set(0, 0.28, 0.35);
   dormer.add(dw);
   const dwf = new THREE.Mesh(new THREE.ShapeGeometry(archShape(0.6, 0.7), 12), timberMat);
-  dwf.position.set(0, 0.25, 0.315);
+  dwf.position.set(0, 0.25, 0.33);
   dormer.add(dwf);
-  dormer.position.set(1.28, H + 0.55, halfD * 0.42);
+  dormer.position.set(1.72, 3.28, 0.55);
+  dormer.rotation.y = Math.PI / 2; // local +z (window) → world +x
   roofGroup.add(dormer); // roof structure → hides with the roof (M1.6)
 
   /* stone chimney + smoke */
@@ -315,6 +328,14 @@ export function buildHouse() {
   chim.add(mesh(box(0.46, 0.1, 0.46), mat('h-soot', () => standard('#3a2b24')), { pos: [0, 2.04, 0] }));
   chim.position.set(-1.25, H + 0.7, -0.75);
   g.add(chim);
+  /* M3-A: flashing saddle where the chimney crosses the curved roof.
+     On the -x slope the surface rises toward +x (y ≈ 3.82 at x -1.66,
+     4.56 at x -0.84); a tilted plate follows that pitch instead of a
+     horizontal slab that would float on one side and sink on the other.
+     Kept out of roofGroup on purpose (smoke puffs live on chim). */
+  const chimFlashing = mesh(box(1.05, 0.1, 0.8), roofDark, { pos: [-1.25, 4.24, -0.75] });
+  chimFlashing.rotation.z = 0.74;
+  g.add(chimFlashing);
 
   const smokeMat = new THREE.MeshBasicMaterial({
     color: '#fff4e4', transparent: true, opacity: 0.34, depthWrite: false,
@@ -339,7 +360,9 @@ export function buildHouse() {
   lantern.add(mesh(geo('lampCap', () => new THREE.ConeGeometry(0.17, 0.14, 5)), roofDark, {
     pos: [0, 0.15, 0],
   }));
-  lantern.position.set(0.38, 2.16, D / 2 + 0.2);
+  // M3-B: lowered out of the canopy band (canopy tips now ~2.41,
+  // lantern cap top ~2.14) while staying clear of the window frame.
+  lantern.position.set(0.38, 1.92, D / 2 + 0.2);
   g.add(lantern);
 
   /* warm bounce light near the door */
